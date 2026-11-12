@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ConfigRegras" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://dados/tipos/config_regras.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+tamanho_mao = 5
+silabas_por_turno = 1
+cartas_por_troca = 0
+erro_passa_a_vez = true
+repor_mao_apos_acerto = true
+quantidade_senhas = 4
+proporcao_distratoras = 1.0
+tamanho_baralho_partida = 0
+mostrar_palavra_escrita = false
+taxa_erro_aprendiz = 0.3
+limite_turnos_partida = 5000
+semente = 0

@@ -148,7 +148,13 @@ Cofre Mágico é um serious game educativo cooperativo de cartas, em versão dig
 <!-- GSD:conventions-start source:CONVENTIONS.md -->
 ## Conventions
 
-Conventions not yet established. Will populate as patterns emerge during development.
+- Identificadores em português sem acento; nomes de arquivo em minúsculas com underscore.
+- Pastas: `nucleo/` (RefCounted, sem Node), `dados/` e `dados/tipos/`, `simulador/`, `testes/unit/` (arquivos `test_*.gd`), `cenas/`, `arte/provisoria/`, `addons/gut/`. `CREDITOS.md` na raiz.
+- GDScript tipado.
+- Núcleo sem Node/await/Timer e sem `shuffle()` global (RNG injetado).
+- Sílabas explícitas por palavra.
+- Valores de regra vivem em `ConfigRegras` (`dados/regras_padrao.tres`), nunca como constantes de código.
+- Testes: um comando via `testes/rodar.ps1` (criado no plano 01-03).
 <!-- GSD:conventions-end -->
 
 <!-- GSD:architecture-start source:ARCHITECTURE.md -->
