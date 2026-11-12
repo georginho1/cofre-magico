@@ -104,16 +104,53 @@ Adiados para uma versão futura. Registrados, mas fora do roadmap atual.
 
 ## Traceability
 
-Preenchida na criação do roadmap.
+Preenchida na criação do roadmap (2026-11-11).
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| FUND-01 | Phase 1 | Pending |
+| FUND-02 | Phase 1 | Pending |
+| FUND-03 | Phase 1 | Pending |
+| FUND-04 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Pending |
+| CONT-02 | Phase 1 | Pending |
+| CONT-03 | Phase 3 | Pending |
+| CONT-04 | Phase 3 | Pending |
+| PART-01 | Phase 2 | Pending |
+| PART-02 | Phase 1 | Pending |
+| PART-03 | Phase 1 | Pending |
+| PART-04 | Phase 1 | Pending |
+| PART-05 | Phase 1 | Pending |
+| PART-06 | Phase 1 | Pending |
+| PART-07 | Phase 1 | Pending |
+| PART-08 | Phase 1 | Pending |
+| PART-09 | Phase 1 | Pending |
+| PART-10 | Phase 1 | Pending |
+| PART-11 | Phase 1 | Pending |
+| MESA-01 | Phase 2 | Pending |
+| MESA-02 | Phase 2 | Pending |
+| MESA-03 | Phase 2 | Pending |
+| MESA-04 | Phase 2 | Pending |
+| MESA-05 | Phase 2 | Pending |
+| MESA-06 | Phase 2 | Pending |
+| MESA-07 | Phase 2 | Pending |
+| MESA-08 | Phase 2 | Pending |
+| MESA-09 | Phase 2 | Pending |
+| COFR-01 | Phase 2 | Pending |
+| COFR-02 | Phase 2 | Pending |
+| COFR-03 | Phase 2 | Pending |
+| COFR-04 | Phase 2 | Pending |
+| COFR-05 | Phase 2 | Pending |
+| AUDI-01 | Phase 3 | Pending |
+| AUDI-02 | Phase 3 | Pending |
+| TEST-01 | Phase 4 | Pending |
+| TEST-02 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 37 total
-- Mapped to phases: 0
-- Unmapped: 37 ⚠️
+- Mapped to phases: 37
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-11-11*
-*Last updated: 2026-11-11 after initial definition*
+*Last updated: 2026-11-11 after roadmap creation*
