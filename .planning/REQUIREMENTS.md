@@ -12,7 +12,7 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 - [x] **FUND-01**: A equipe abre o projeto no Godot 4.7.2 (renderizador Compatibility, base 1280×720, paisagem) e executa a cena inicial no PC
 - [ ] **FUND-02**: Um APK do projeto é instalado e executado em um aparelho Android real
 - [x] **FUND-03**: Um executável de PC do projeto é gerado e executado
-- [ ] **FUND-04**: Os testes automatizados das regras (GUT) rodam com um único comando
+- [x] **FUND-04**: Os testes automatizados das regras (GUT) rodam com um único comando
 
 ### Conteúdo
 
@@ -32,7 +32,7 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 - [ ] **PART-07**: O mago pode comprar ou trocar cartas no seu turno quando não tem jogada
 - [ ] **PART-08**: Após a ação, a vez passa para o próximo mago na ordem
 - [ ] **PART-09**: Toda partida pode ser concluída: nenhuma carta necessária fica inalcançável e todo turno tem ao menos uma ação possível
-- [ ] **PART-10**: A equipe ajusta as regras (tamanho da mão, troca, número de senhas, tamanho do baralho da partida, palavra escrita) em um arquivo de configuração, sem alterar código
+- [x] **PART-10**: A equipe ajusta as regras (tamanho da mão, troca, número de senhas, tamanho do baralho da partida, palavra escrita) em um arquivo de configuração, sem alterar código
 - [ ] **PART-11**: A equipe executa um simulador sem interface que mede turnos sem jogada, duração da partida e partidas em que um mago não pontua
 
 ### Mesa (interface)
@@ -111,7 +111,7 @@ Preenchida na criação do roadmap (2026-11-11).
 | FUND-01 | Phase 1 | Complete |
 | FUND-02 | Phase 1 | Pending |
 | FUND-03 | Phase 1 | Complete |
-| FUND-04 | Phase 1 | Pending |
+| FUND-04 | Phase 1 | Complete |
 | CONT-01 | Phase 1 | Pending |
 | CONT-02 | Phase 1 | Pending |
 | CONT-03 | Phase 3 | Pending |
@@ -125,7 +125,7 @@ Preenchida na criação do roadmap (2026-11-11).
 | PART-07 | Phase 1 | Pending |
 | PART-08 | Phase 1 | Pending |
 | PART-09 | Phase 1 | Pending |
-| PART-10 | Phase 1 | Pending |
+| PART-10 | Phase 1 | Complete |
 | PART-11 | Phase 1 | Pending |
 | MESA-01 | Phase 2 | Pending |
 | MESA-02 | Phase 2 | Pending |
