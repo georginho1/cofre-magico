@@ -18,7 +18,10 @@ Um grupo de até quatro jogadores, em um único aparelho, consegue jogar uma par
 
 - [ ] Partida para 1 a 4 jogadores no mesmo aparelho, em turnos (pass-and-play), cada um como um mago de cor (vermelho, azul, verde, amarelo)
 - [ ] Sorteio automático de 4 palavras-senha entre as 30 palavras ilustradas a cada partida
-- [ ] Baralho de 100 cartas de sílabas (22 sílabas CV distintas) com a distribuição do protótipo físico
+- [ ] Baralho de 100 cartas de sílabas (22 sílabas CV distintas) com a distribuição do protótipo físico como base; cada partida usa um recorte concentrado nas sílabas das senhas sorteadas
+- [ ] Palavra escrita junto da ilustração configurável (ligada ou desligada)
+- [ ] Mesa mostra apenas a mão do mago da vez
+- [ ] Efeitos sonoros básicos com botão de mudo
 - [ ] Cada mago tem uma mão de cartas; no turno joga uma sílaba em uma palavra-senha ou compra/troca do baralho
 - [ ] O jogo valida sozinho se a sílaba está correta para a posição escolhida (sem exposição pública de erro)
 - [ ] Cada sílaba correta é marcada com a cor do mago autor e rende um ponto simbólico
@@ -91,6 +94,10 @@ CA×8, TA×8, TO×8, LA×7, PA×7, BO×6, MA×6, SA×6, GA×5, NO×5, GO×4, LO�
 | Magos iguais, sem habilidades | Mantém o escopo viável para dezembro | — Pending |
 | Arte de licença livre | Equipe pequena e prazo curto | — Pending |
 | Exportar para Android e PC | Mobile é a plataforma-alvo; PC facilita a demonstração | — Pending |
+| Baralho reduzido por partida | A simulação da pesquisa indicou 41% a 80% de turnos sem jogada com as 100 cartas; diverge do jogo físico | — Pending |
+| Palavra escrita configurável | Funciona como nível de dificuldade e reduz a dependência da qualidade das ilustrações | — Pending |
+| Só a mão do mago da vez na tela | Cartas maiores no celular; quem está ao lado vê e pode ajudar | — Pending |
+| Áudio só com efeitos sonoros | Palavras e sílabas faladas exigem gravação; ficam para v2 | — Pending |
 
 ## Evolution
 
