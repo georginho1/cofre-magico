@@ -1,0 +1,189 @@
+[gd_resource type="Resource" script_class="BibliotecaPalavras" load_steps=34 format=3]
+
+[ext_resource type="Script" path="res://dados/tipos/biblioteca_palavras.gd" id="1_bib"]
+[ext_resource type="Script" path="res://dados/tipos/dados_palavra.gd" id="2_pal"]
+[ext_resource type="Texture2D" path="res://arte/provisoria/placeholder_palavra.svg" id="3_img"]
+
+[sub_resource type="Resource" id="Resource_0"]
+script = ExtResource("2_pal")
+texto = "CASA"
+silabas = PackedStringArray("CA", "SA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2_pal")
+texto = "CAMA"
+silabas = PackedStringArray("CA", "MA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("2_pal")
+texto = "CANO"
+silabas = PackedStringArray("CA", "NO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_3"]
+script = ExtResource("2_pal")
+texto = "CARA"
+silabas = PackedStringArray("CA", "RA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_4"]
+script = ExtResource("2_pal")
+texto = "BOCA"
+silabas = PackedStringArray("BO", "CA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_5"]
+script = ExtResource("2_pal")
+texto = "BOLA"
+silabas = PackedStringArray("BO", "LA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_6"]
+script = ExtResource("2_pal")
+texto = "BOLO"
+silabas = PackedStringArray("BO", "LO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_7"]
+script = ExtResource("2_pal")
+texto = "BOTA"
+silabas = PackedStringArray("BO", "TA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_8"]
+script = ExtResource("2_pal")
+texto = "PATO"
+silabas = PackedStringArray("PA", "TO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_9"]
+script = ExtResource("2_pal")
+texto = "PATA"
+silabas = PackedStringArray("PA", "TA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_10"]
+script = ExtResource("2_pal")
+texto = "PANO"
+silabas = PackedStringArray("PA", "NO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_11"]
+script = ExtResource("2_pal")
+texto = "PIPA"
+silabas = PackedStringArray("PI", "PA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_12"]
+script = ExtResource("2_pal")
+texto = "GATO"
+silabas = PackedStringArray("GA", "TO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_13"]
+script = ExtResource("2_pal")
+texto = "GATA"
+silabas = PackedStringArray("GA", "TA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_14"]
+script = ExtResource("2_pal")
+texto = "GALO"
+silabas = PackedStringArray("GA", "LO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_15"]
+script = ExtResource("2_pal")
+texto = "GOLA"
+silabas = PackedStringArray("GO", "LA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_16"]
+script = ExtResource("2_pal")
+texto = "GOTA"
+silabas = PackedStringArray("GO", "TA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_17"]
+script = ExtResource("2_pal")
+texto = "MALA"
+silabas = PackedStringArray("MA", "LA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_18"]
+script = ExtResource("2_pal")
+texto = "MATO"
+silabas = PackedStringArray("MA", "TO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_19"]
+script = ExtResource("2_pal")
+texto = "MOTO"
+silabas = PackedStringArray("MO", "TO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_20"]
+script = ExtResource("2_pal")
+texto = "MOLA"
+silabas = PackedStringArray("MO", "LA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_21"]
+script = ExtResource("2_pal")
+texto = "RATO"
+silabas = PackedStringArray("RA", "TO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_22"]
+script = ExtResource("2_pal")
+texto = "SAPO"
+silabas = PackedStringArray("SA", "PO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_23"]
+script = ExtResource("2_pal")
+texto = "SACO"
+silabas = PackedStringArray("SA", "CO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_24"]
+script = ExtResource("2_pal")
+texto = "SALA"
+silabas = PackedStringArray("SA", "LA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_25"]
+script = ExtResource("2_pal")
+texto = "SINO"
+silabas = PackedStringArray("SI", "NO")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_26"]
+script = ExtResource("2_pal")
+texto = "SOPA"
+silabas = PackedStringArray("SO", "PA")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_27"]
+script = ExtResource("2_pal")
+texto = "TATU"
+silabas = PackedStringArray("TA", "TU")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_28"]
+script = ExtResource("2_pal")
+texto = "TAPETE"
+silabas = PackedStringArray("TA", "PE", "TE")
+imagem = ExtResource("3_img")
+
+[sub_resource type="Resource" id="Resource_29"]
+script = ExtResource("2_pal")
+texto = "TOMATE"
+silabas = PackedStringArray("TO", "MA", "TE")
+imagem = ExtResource("3_img")
+
+[resource]
+script = ExtResource("1_bib")
+palavras = Array[ExtResource("2_pal")]([SubResource("Resource_0"), SubResource("Resource_1"), SubResource("Resource_2"), SubResource("Resource_3"), SubResource("Resource_4"), SubResource("Resource_5"), SubResource("Resource_6"), SubResource("Resource_7"), SubResource("Resource_8"), SubResource("Resource_9"), SubResource("Resource_10"), SubResource("Resource_11"), SubResource("Resource_12"), SubResource("Resource_13"), SubResource("Resource_14"), SubResource("Resource_15"), SubResource("Resource_16"), SubResource("Resource_17"), SubResource("Resource_18"), SubResource("Resource_19"), SubResource("Resource_20"), SubResource("Resource_21"), SubResource("Resource_22"), SubResource("Resource_23"), SubResource("Resource_24"), SubResource("Resource_25"), SubResource("Resource_26"), SubResource("Resource_27"), SubResource("Resource_28"), SubResource("Resource_29")])

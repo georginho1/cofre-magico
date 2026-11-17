@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DistribuicaoBaralho" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://dados/tipos/distribuicao_baralho.gd" id="1_dist"]
+
+[resource]
+script = ExtResource("1_dist")
+copias = Dictionary[String, int]({"CA": 8, "TA": 8, "TO": 8, "LA": 7, "PA": 7, "BO": 6, "MA": 6, "SA": 6, "GA": 5, "NO": 5, "GO": 4, "LO": 4, "MO": 4, "RA": 4, "TE": 4, "CO": 2, "PE": 2, "PI": 2, "PO": 2, "SI": 2, "SO": 2, "TU": 2})
