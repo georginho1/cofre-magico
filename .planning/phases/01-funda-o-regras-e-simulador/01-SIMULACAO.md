@@ -307,3 +307,250 @@ Perfil perfeito, ordenado por turnos até completar (decrescente). [3 síl.] = p
 | PATA | 656 | 6.19 | 105 |  |
 | CAMA | 644 | 6.16 | 75 |  |
 
+## Atualização após revisão de código (2026-11-17)
+
+A revisão de código da fase (01-REVIEW.md) mudou o simulador e uma regra do núcleo. Os números acima desta seção são anteriores a essas correções e ficam como registro histórico. `dados/regras_padrao.tres` NÃO foi alterado (proporcao_distratoras = 0.40, erro_passa_a_vez = true, demais valores iguais).
+
+O que mudou:
+
+- CR-01 (métrica): a coluna "Erro" contava só turnos que terminavam em ERRO. Com erro_passa_a_vez = false o turno nunca termina em ERRO, então o aprendiz aparecia com 0.0% de erro. Agora o relatório mostra "Turnos com erro" (turnos com pelo menos uma jogada errada, qualquer que seja o fim do turno) e "Erros por turno" (jogadas erradas / turnos). A comparação D-04 da seção (c) usava a métrica antiga e está substituída pela tabela abaixo.
+- WR-02 (regra do núcleo, efeito na jogabilidade): `trocar_mao` agora compra as cartas novas antes de devolver as descartadas ao baralho, como no jogo físico. Antes o jogador podia receber de volta as próprias cartas. Isso reduz os turnos sem ponto. Precisa de confirmação da equipe.
+- WR-05: D-18 e D-19 não passam mais por vacuidade quando nenhuma partida termina. WR-06: o impacto por palavra conta só partidas terminadas. IN-06: pontos médios por mago dividem pelo número real de magos. Nenhuma das três muda os números desta execução (todas as partidas terminam e n_magos está entre 1 e 4).
+
+### Antes e depois (relatório final, 5000 partidas, semente 2026, perfil perfeito)
+
+| Medida | Antes | Depois |
+|---|---|---|
+| Turnos sem ponto, 1 / 2 / 3 / 4 magos | 36.4 / 33.1 / 30.2 / 28.0% | 33.8 / 31.2 / 28.3 / 26.6% |
+| Média D-18 (2 a 4 magos) | 30.4% | 28.7% |
+| Turnos por partida (média), 1 / 4 magos | 13.0 / 11.5 | 12.5 / 11.3 |
+| D-19 (4 magos) | 0.7% | 0.5% |
+| D-18 com 1 mago (só relatada) | falha (36.4%) | passa (33.8%) |
+| Erro do aprendiz, 1 a 4 magos (true) | 19.0 / 19.8 / 20.8 / 20.8% (turnos que terminaram em erro) | 19.8 / 20.2 / 21.1 / 21.1% (turnos com erro) |
+
+Metas com as regras atuais: D-18 (2, 3 e 4 magos e média) PASS, D-19 PASS, D-20 PASS. D-18 com 1 mago continua só relatada e agora passa. A queda de cerca de 2 pontos nos turnos sem ponto vem do WR-02. As palavras mais lentas continuam as mesmas (TAPETE primeiro em todas as contagens de magos, depois palavras com sílaba de 2 cópias), mas completam em menos turnos (TAPETE 11.98 com 1 mago, antes 14.98 com proporção 1.0).
+
+### Comparação D-04 refeita (erro_passa_a_vez true x false)
+
+Comandos: `simulador/simular.ps1 --partidas=3000 --semente=2026 --set=proporcao_distratoras=1.0` com e sem `--set=erro_passa_a_vez=false` (mesma proporção da seção (c)); e os mesmos comandos sem `--set=proporcao_distratoras` (regras atuais, 0.40). Todos saíram com código 0 e 100% das partidas terminadas.
+
+Proporção 1.0, aprendiz (taxa_erro_aprendiz = 0.3), 3000 partidas, semente 2026:
+
+| magos | true: turnos / sem ponto / turnos com erro / erros por turno | false: turnos / sem ponto / turnos com erro / erros por turno | dif. aprendiz - perfeito (true -> false) | mago sem sílaba (true -> false) |
+|---|---|---|---|---|
+| 1 | 18.8 / 56.1% / 15.9% / 0.159 | 15.8 / 47.7% / 13.3% / 0.189 | +3.08 -> +0.08 | 0.0% -> 0.0% |
+| 2 | 18.3 / 54.7% / 16.6% / 0.166 | 15.2 / 45.5% / 14.0% / 0.201 | +2.97 -> -0.12 | 0.0% -> 0.0% |
+| 3 | 17.8 / 53.5% / 17.4% / 0.174 | 14.8 / 44.2% / 14.7% / 0.210 | +2.98 -> +0.03 | 0.8% -> 0.2% |
+| 4 | 17.5 / 52.7% / 17.8% / 0.178 | 14.3 / 42.0% / 15.1% / 0.216 | +3.17 -> -0.04 | 7.2% -> 2.3% |
+
+Proporção 0.40 (regras atuais), aprendiz (taxa_erro_aprendiz = 0.3), 3000 partidas, semente 2026:
+
+| magos | true: turnos / sem ponto / turnos com erro / erros por turno | false: turnos / sem ponto / turnos com erro / erros por turno | dif. aprendiz - perfeito (true -> false) | mago sem sílaba (true -> false) |
+|---|---|---|---|---|
+| 1 | 15.5 / 46.6% / 19.7% / 0.197 | 12.4 / 33.5% / 17.2% / 0.246 | +3.06 -> +0.00 | 0.0% -> 0.0% |
+| 2 | 15.1 / 45.3% / 20.3% / 0.203 | 12.0 / 31.3% / 17.8% / 0.255 | +3.08 -> -0.00 | 0.0% -> 0.0% |
+| 3 | 14.8 / 44.0% / 21.1% / 0.211 | 11.6 / 29.0% / 18.5% / 0.270 | +3.25 -> +0.12 | 1.0% -> 0.0% |
+| 4 | 14.5 / 43.0% / 21.0% / 0.210 | 11.3 / 26.7% / 19.1% / 0.275 | +3.18 -> -0.05 | 7.4% -> 0.6% |
+
+Leitura: com erro_passa_a_vez = false o aprendiz erra tanto quanto antes (cerca de 13 a 19% dos turnos têm erro, e há mais erros por turno do que com true, porque ele tenta de novo no mesmo turno), mas o erro não custa turno: a partida dura o mesmo que a do perfeito. Com true, cada erro vira um turno perdido, cerca de 3 turnos a mais por partida, e o mago sem sílaba com 4 magos sobe para 7.2% (1.0) ou 7.4% (0.40), contra 2.3% e 0.6% com false. O 0.0% de erro da seção (c) era artefato da métrica; a conclusão qualitativa sobre turnos e mago sem sílaba se mantém. D-04 continua true; a escolha segue com a equipe.
+
+### Relatório final atualizado
+
+Comando: `simulador/simular.ps1 --partidas=5000 --semente=2026` com dados/regras_padrao.tres (código de saída 0).
+
+Semente: 2026 | Partidas por linha: 5000
+
+#### Configuração (ConfigRegras)
+
+- tamanho_mao = 5
+- silabas_por_turno = 1
+- cartas_por_troca = 0
+- erro_passa_a_vez = true
+- repor_mao_apos_acerto = true
+- quantidade_senhas = 4
+- proporcao_distratoras = 0.4
+- tamanho_baralho_partida = 0
+- mostrar_palavra_escrita = false
+- taxa_erro_aprendiz = 0.3
+- limite_turnos_partida = 5000
+- semente = 0
+
+#### Resultados por magos x perfil
+
+| Magos | Perfil | Terminadas | Turnos (média/mediana/p95) | Turnos por mago | Sem ponto | Troca | Turnos com erro | Partidas com mago sem sílaba | Pontos médios por mago |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | perfeito | 100.0% | 12.5 / 12.0 / 19.0 | 12.5 | 33.8% | 33.8% | 0.0% | 0.0% | 8.27 |
+| 1 | aprendiz | 100.0% | 15.6 / 15.0 / 23.0 | 15.6 | 46.8% | 27.0% | 19.8% | 0.0% | 8.27 |
+| 2 | perfeito | 100.0% | 12.0 / 11.0 / 18.0 | 6.0 | 31.2% | 31.2% | 0.0% | 0.0% | 4.14 |
+| 2 | aprendiz | 100.0% | 15.1 / 14.0 / 22.0 | 7.6 | 45.4% | 25.2% | 20.2% | 0.0% | 4.14 |
+| 3 | perfeito | 100.0% | 11.5 / 11.0 / 17.0 | 3.8 | 28.3% | 28.3% | 0.0% | 0.0% | 2.76 |
+| 3 | aprendiz | 100.0% | 14.8 / 14.0 / 22.0 | 4.9 | 44.1% | 23.1% | 21.1% | 0.8% | 2.76 |
+| 4 | perfeito | 100.0% | 11.3 / 11.0 / 16.0 | 2.8 | 26.6% | 26.6% | 0.0% | 0.5% | 2.07 |
+| 4 | aprendiz | 100.0% | 14.5 / 14.0 / 21.0 | 3.6 | 43.0% | 21.9% | 21.1% | 7.5% | 2.07 |
+
+#### Metas
+
+- RELATADO (passa) D-18: turnos sem ponto <= 35% com 1 mago(s), perfeito (33.8%)
+- PASS D-18: turnos sem ponto <= 35% com 2 mago(s), perfeito (31.2%)
+- PASS D-18: turnos sem ponto <= 35% com 3 mago(s), perfeito (28.3%)
+- PASS D-18: turnos sem ponto <= 35% com 4 mago(s), perfeito (26.6%)
+- PASS D-18: media de turnos sem ponto nos magos exigidos <= 35% (28.7%)
+- PASS D-19: partidas com mago sem silaba <= 5% com 4 magos, perfeito (0.5%)
+- PASS D-20: 100% das partidas terminam, todas as linhas
+
+#### Comparação perfeito x aprendiz
+
+Regra em vigor (D-04): erro_passa_a_vez = true; taxa_erro_aprendiz = 0.3
+
+Turnos com erro = turnos com pelo menos uma jogada errada, qualquer que seja o fim do turno. Erros por turno = jogadas erradas / turnos.
+
+| Magos | Dif. turnos médios (aprendiz - perfeito) | Turnos com erro (aprendiz) | Erros por turno (aprendiz) | Mago sem sílaba (perfeito) | Mago sem sílaba (aprendiz) |
+|---|---|---|---|---|---|
+| 1 | +3.05 | 19.8% | 0.198 | 0.0% | 0.0% |
+| 2 | +3.13 | 20.2% | 0.202 | 0.0% | 0.0% |
+| 3 | +3.27 | 21.1% | 0.211 | 0.0% | 0.8% |
+| 4 | +3.24 | 21.1% | 0.211 | 0.5% | 7.5% |
+
+#### Impacto por palavra
+
+Perfil perfeito, ordenado por turnos até completar (decrescente). [3 síl.] = palavra de 3 sílabas; [2 cópias] = contém sílaba com 2 cópias no baralho.
+
+##### 1 mago(s)
+
+| Palavra | Aparições | Turnos até completar | Vezes última | Marcas |
+|---|---|---|---|---|
+| TAPETE | 697 | 11.98 | 338 | [3 síl.] [2 cópias] |
+| SAPO | 642 | 10.32 | 283 | [2 cópias] |
+| SACO | 693 | 10.03 | 298 | [2 cópias] |
+| SOPA | 615 | 9.93 | 252 | [2 cópias] |
+| SINO | 650 | 9.91 | 273 | [2 cópias] |
+| PIPA | 652 | 9.83 | 272 | [2 cópias] |
+| TATU | 696 | 9.66 | 268 | [2 cópias] |
+| TOMATE | 668 | 9.32 | 180 | [3 síl.] |
+| BOLO | 623 | 8.18 | 167 |  |
+| GALO | 708 | 8.16 | 190 |  |
+| MOTO | 637 | 7.88 | 140 |  |
+| GOLA | 700 | 7.82 | 178 |  |
+| MOLA | 670 | 7.72 | 163 |  |
+| GOTA | 673 | 7.68 | 150 |  |
+| CARA | 679 | 7.54 | 158 |  |
+| RATO | 679 | 7.53 | 153 |  |
+| PANO | 685 | 7.48 | 140 |  |
+| GATO | 643 | 7.30 | 117 |  |
+| GATA | 665 | 7.23 | 125 |  |
+| MALA | 653 | 7.04 | 114 |  |
+| SALA | 686 | 7.04 | 126 |  |
+| BOTA | 635 | 7.03 | 111 |  |
+| CANO | 657 | 6.95 | 98 |  |
+| CASA | 597 | 6.92 | 96 |  |
+| BOLA | 706 | 6.91 | 102 |  |
+| BOCA | 672 | 6.89 | 95 |  |
+| MATO | 674 | 6.86 | 98 |  |
+| PATA | 675 | 6.83 | 102 |  |
+| CAMA | 678 | 6.75 | 106 |  |
+| PATO | 692 | 6.71 | 107 |  |
+
+##### 2 mago(s)
+
+| Palavra | Aparições | Turnos até completar | Vezes última | Marcas |
+|---|---|---|---|---|
+| TAPETE | 674 | 11.53 | 316 | [3 síl.] [2 cópias] |
+| SINO | 708 | 9.79 | 322 | [2 cópias] |
+| PIPA | 613 | 9.54 | 257 | [2 cópias] |
+| SAPO | 658 | 9.48 | 291 | [2 cópias] |
+| SOPA | 721 | 9.41 | 295 | [2 cópias] |
+| TATU | 644 | 9.27 | 250 | [2 cópias] |
+| SACO | 715 | 9.11 | 281 | [2 cópias] |
+| TOMATE | 690 | 8.98 | 163 | [3 síl.] |
+| GALO | 669 | 7.95 | 194 |  |
+| BOLO | 715 | 7.65 | 174 |  |
+| MOLA | 661 | 7.57 | 165 |  |
+| MOTO | 658 | 7.56 | 172 |  |
+| GOTA | 632 | 7.50 | 140 |  |
+| GOLA | 684 | 7.47 | 145 |  |
+| CARA | 660 | 7.29 | 149 |  |
+| RATO | 669 | 7.25 | 135 |  |
+| GATO | 667 | 7.21 | 131 |  |
+| PANO | 616 | 7.00 | 118 |  |
+| MALA | 684 | 6.97 | 127 |  |
+| GATA | 687 | 6.91 | 118 |  |
+| SALA | 679 | 6.86 | 121 |  |
+| BOTA | 673 | 6.80 | 107 |  |
+| CANO | 660 | 6.76 | 110 |  |
+| BOCA | 693 | 6.72 | 113 |  |
+| BOLA | 618 | 6.71 | 103 |  |
+| MATO | 657 | 6.70 | 109 |  |
+| CAMA | 632 | 6.64 | 100 |  |
+| CASA | 672 | 6.55 | 108 |  |
+| PATA | 629 | 6.44 | 93 |  |
+| PATO | 662 | 6.35 | 93 |  |
+
+##### 3 mago(s)
+
+| Palavra | Aparições | Turnos até completar | Vezes última | Marcas |
+|---|---|---|---|---|
+| TAPETE | 694 | 10.88 | 327 | [3 síl.] [2 cópias] |
+| SACO | 680 | 9.22 | 276 | [2 cópias] |
+| PIPA | 701 | 9.18 | 310 | [2 cópias] |
+| TATU | 637 | 9.12 | 266 | [2 cópias] |
+| SINO | 682 | 9.08 | 301 | [2 cópias] |
+| TOMATE | 647 | 9.05 | 192 | [3 síl.] |
+| SOPA | 634 | 9.00 | 254 | [2 cópias] |
+| SAPO | 669 | 8.97 | 266 | [2 cópias] |
+| GALO | 627 | 7.51 | 155 |  |
+| BOLO | 695 | 7.49 | 171 |  |
+| GOLA | 655 | 7.31 | 151 |  |
+| RATO | 633 | 7.24 | 132 |  |
+| CARA | 649 | 7.18 | 151 |  |
+| MOLA | 722 | 7.17 | 155 |  |
+| MOTO | 685 | 7.14 | 145 |  |
+| GOTA | 692 | 6.97 | 140 |  |
+| CANO | 655 | 6.85 | 131 |  |
+| SALA | 655 | 6.84 | 131 |  |
+| PANO | 645 | 6.82 | 127 |  |
+| BOLA | 651 | 6.80 | 124 |  |
+| BOCA | 680 | 6.76 | 132 |  |
+| GATO | 673 | 6.71 | 124 |  |
+| MALA | 709 | 6.69 | 118 |  |
+| GATA | 661 | 6.69 | 112 |  |
+| CASA | 674 | 6.64 | 111 |  |
+| MATO | 650 | 6.61 | 122 |  |
+| BOTA | 604 | 6.58 | 91 |  |
+| CAMA | 685 | 6.47 | 100 |  |
+| PATO | 715 | 6.46 | 105 |  |
+| PATA | 641 | 6.32 | 80 |  |
+
+##### 4 mago(s)
+
+| Palavra | Aparições | Turnos até completar | Vezes última | Marcas |
+|---|---|---|---|---|
+| TAPETE | 717 | 10.77 | 366 | [3 síl.] [2 cópias] |
+| PIPA | 658 | 9.12 | 280 | [2 cópias] |
+| SAPO | 680 | 9.11 | 305 | [2 cópias] |
+| SINO | 664 | 9.01 | 296 | [2 cópias] |
+| TATU | 680 | 8.96 | 267 | [2 cópias] |
+| SACO | 635 | 8.95 | 271 | [2 cópias] |
+| SOPA | 660 | 8.91 | 264 | [2 cópias] |
+| TOMATE | 661 | 8.83 | 182 | [3 síl.] |
+| BOLO | 659 | 7.49 | 180 |  |
+| GALO | 675 | 7.47 | 193 |  |
+| MOTO | 628 | 7.27 | 158 |  |
+| MOLA | 629 | 7.27 | 132 |  |
+| GOLA | 652 | 7.04 | 157 |  |
+| GOTA | 676 | 7.02 | 142 |  |
+| PANO | 653 | 6.94 | 144 |  |
+| CARA | 685 | 6.92 | 138 |  |
+| RATO | 665 | 6.91 | 145 |  |
+| GATO | 645 | 6.71 | 119 |  |
+| BOLA | 658 | 6.67 | 112 |  |
+| MALA | 728 | 6.67 | 120 |  |
+| CANO | 682 | 6.63 | 126 |  |
+| GATA | 665 | 6.61 | 112 |  |
+| SALA | 707 | 6.45 | 115 |  |
+| BOTA | 667 | 6.41 | 121 |  |
+| MATO | 679 | 6.30 | 104 |  |
+| PATO | 657 | 6.29 | 86 |  |
+| BOCA | 663 | 6.24 | 95 |  |
+| CASA | 672 | 6.23 | 87 |  |
+| CAMA | 644 | 6.18 | 78 |  |
+| PATA | 656 | 6.17 | 105 |  |
