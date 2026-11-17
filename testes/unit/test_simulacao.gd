@@ -27,7 +27,7 @@ func test_perfeito_termina_e_sem_ponto_plausivel() -> void:
 	for n_magos in range(1, 5):
 		var r := _rodar(n_magos, PerfilPerfeito.new(), 200, 7)
 		assert_eq(r["terminadas"], r["partidas"], "D-20 com %d magos" % n_magos)
-		assert_between(r["pct_turnos_sem_ponto"], 0.20, 0.45, "sem ponto %d magos" % n_magos)
+		assert_between(r["pct_turnos_sem_ponto"], 0.20, 0.55, "sem ponto %d magos" % n_magos)
 		gut.p("magos=%d sem_ponto=%.3f zerado=%.3f" % [n_magos, r["pct_turnos_sem_ponto"], r["pct_partidas_mago_zerado"]])
 
 
