@@ -24,9 +24,9 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 ### Partida (regras)
 
 - [ ] **PART-01**: Os jogadores escolhem quais magos participam (1 a 4) tocando neles, sem digitar nomes
-- [ ] **PART-02**: A cada partida o jogo sorteia 4 palavras-senha entre as 30
-- [ ] **PART-03**: O baralho de cada partida é um recorte do baralho de 100 cartas, concentrado nas sílabas das senhas sorteadas
-- [ ] **PART-04**: Cada mago recebe uma mão de cartas de sílabas no início da partida
+- [x] **PART-02**: A cada partida o jogo sorteia 4 palavras-senha entre as 30
+- [x] **PART-03**: O baralho de cada partida é um recorte do baralho de 100 cartas, concentrado nas sílabas das senhas sorteadas
+- [x] **PART-04**: Cada mago recebe uma mão de cartas de sílabas no início da partida
 - [ ] **PART-05**: No seu turno, o mago coloca uma sílaba da mão em um espaço de uma palavra-senha, e o jogo aceita apenas se for a sílaba daquele espaço exato
 - [ ] **PART-06**: Quando a sílaba não serve, a carta volta para a mão sem punição nem marcação de erro
 - [ ] **PART-07**: O mago pode comprar ou trocar cartas no seu turno quando não tem jogada
@@ -117,9 +117,9 @@ Preenchida na criação do roadmap (2026-11-11).
 | CONT-03 | Phase 3 | Pending |
 | CONT-04 | Phase 3 | Pending |
 | PART-01 | Phase 2 | Pending |
-| PART-02 | Phase 1 | Pending |
-| PART-03 | Phase 1 | Pending |
-| PART-04 | Phase 1 | Pending |
+| PART-02 | Phase 1 | Complete |
+| PART-03 | Phase 1 | Complete |
+| PART-04 | Phase 1 | Complete |
 | PART-05 | Phase 1 | Pending |
 | PART-06 | Phase 1 | Pending |
 | PART-07 | Phase 1 | Pending |
