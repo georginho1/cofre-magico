@@ -1,8 +1,22 @@
+# Godot 4+
 .godot/
+.import/
+.nomedia
+~*.dll
+export.cfg
+export_credentials.cfg
+*.tmp
+*.translation
+
+# Mono
+.mono/
+data_*/
+mono_crash.*.json
+
+# Assinatura e saidas de exportacao
 *.keystore
 *.jks
 *.apk
 *.aab
+*.exe
 build/
-export_credentials.cfg
-*.tmp
