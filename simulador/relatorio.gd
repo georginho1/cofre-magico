@@ -4,6 +4,9 @@ extends RefCounted
 
 const META_SEM_PONTO: float = 0.35
 const META_MAGO_ZERADO: float = 0.05
+## Numeros de magos para os quais D-18 e exigida (decisao da equipe, D-22).
+## Os demais (1 mago) sao apenas relatados.
+const MAGOS_D18_EXIGIDOS: Array = [2, 3, 4]
 
 
 static func _pct(v: float) -> String:
@@ -25,8 +28,8 @@ static func _achar(resultados: Array, n_magos: int, perfil: String) -> Dictionar
 	return {}
 
 
-static func avaliar_metas(resultados: Array) -> Array:
-	## Lista de {id, descricao, ok}.
+static func avaliar_metas(resultados: Array, magos_d18: Array = MAGOS_D18_EXIGIDOS) -> Array:
+	## Lista de {id, descricao, ok, exigida}. Metas nao exigidas sao so relatadas.
 	var saida: Array = []
 	var soma: float = 0.0
 	var cont: int = 0
@@ -34,25 +37,33 @@ static func avaliar_metas(resultados: Array) -> Array:
 		var r := _achar(resultados, n, "perfeito")
 		if r.is_empty():
 			continue
-		saida.append({"id": "D-18", "descricao": "turnos sem ponto <= 35%% com %d mago(s), perfeito (%s)" % [n, _pct(r["pct_turnos_sem_ponto"])], "ok": r["pct_turnos_sem_ponto"] <= META_SEM_PONTO})
-		soma += r["pct_turnos_sem_ponto"]
-		cont += 1
+		var exigida: bool = n in magos_d18
+		saida.append({"id": "D-18", "descricao": "turnos sem ponto <= 35%% com %d mago(s), perfeito (%s)" % [n, _pct(r["pct_turnos_sem_ponto"])], "ok": r["pct_turnos_sem_ponto"] <= META_SEM_PONTO, "exigida": exigida})
+		if exigida:
+			soma += r["pct_turnos_sem_ponto"]
+			cont += 1
 	if cont > 0:
-		saida.append({"id": "D-18", "descricao": "media de turnos sem ponto 1 a 4 magos <= 35%% (%s)" % _pct(soma / cont), "ok": soma / cont <= META_SEM_PONTO})
+		saida.append({"id": "D-18", "descricao": "media de turnos sem ponto nos magos exigidos <= 35%% (%s)" % _pct(soma / cont), "ok": soma / cont <= META_SEM_PONTO, "exigida": true})
 	var r4 := _achar(resultados, 4, "perfeito")
 	if not r4.is_empty():
-		saida.append({"id": "D-19", "descricao": "partidas com mago sem silaba <= 5%% com 4 magos, perfeito (%s)" % _pct(r4["pct_partidas_mago_zerado"]), "ok": r4["pct_partidas_mago_zerado"] <= META_MAGO_ZERADO})
+		saida.append({"id": "D-19", "descricao": "partidas com mago sem silaba <= 5%% com 4 magos, perfeito (%s)" % _pct(r4["pct_partidas_mago_zerado"]), "ok": r4["pct_partidas_mago_zerado"] <= META_MAGO_ZERADO, "exigida": true})
 	var todas: bool = true
 	for r in resultados:
 		if r["terminadas"] != r["partidas"]:
 			todas = false
-	saida.append({"id": "D-20", "descricao": "100% das partidas terminam, todas as linhas", "ok": todas})
+	saida.append({"id": "D-20", "descricao": "100% das partidas terminam, todas as linhas", "ok": todas, "exigida": true})
 	return saida
+
+
+static func rotulo_meta(m: Dictionary) -> String:
+	if not m["exigida"]:
+		return "RELATADO (%s)" % ("passa" if m["ok"] else "falha")
+	return "PASS" if m["ok"] else "FAIL"
 
 
 static func metas_ok(resultados: Array) -> bool:
 	for m in avaliar_metas(resultados):
-		if not m["ok"]:
+		if m["exigida"] and not m["ok"]:
 			return false
 	return true
 
@@ -94,7 +105,7 @@ static func montar(
 	t.append("## Metas")
 	t.append("")
 	for m in avaliar_metas(resultados):
-		t.append("- %s %s: %s" % ["PASS" if m["ok"] else "FAIL", m["id"], m["descricao"]])
+		t.append("- %s %s: %s" % [rotulo_meta(m), m["id"], m["descricao"]])
 	t.append("")
 
 	t.append("## Comparação perfeito x aprendiz")

@@ -99,3 +99,21 @@ func test_chaves_do_retorno() -> void:
 		assert_true(r.has(k), k)
 	for k in ["media", "mediana", "p95"]:
 		assert_true(r["turnos_partida"].has(k), k)
+
+
+func _res(n: int, sem_ponto: float) -> Dictionary:
+	return {"n_magos": n, "perfil": "perfeito", "partidas": 10, "terminadas": 10,
+			"pct_turnos_sem_ponto": sem_ponto, "pct_partidas_mago_zerado": 0.0}
+
+
+func test_d18_um_mago_so_relatado() -> void:
+	var rs: Array = [_res(1, 0.362), _res(2, 0.331), _res(3, 0.30), _res(4, 0.27)]
+	var metas := Relatorio.avaliar_metas(rs)
+	assert_true(Relatorio.metas_ok(rs))
+	assert_eq(Relatorio.rotulo_meta(metas[0]), "RELATADO (falha)")
+	assert_eq(Relatorio.rotulo_meta(metas[1]), "PASS")
+
+
+func test_d18_exigida_falha_em_2_magos() -> void:
+	var rs: Array = [_res(1, 0.30), _res(2, 0.36), _res(3, 0.30), _res(4, 0.27)]
+	assert_false(Relatorio.metas_ok(rs))

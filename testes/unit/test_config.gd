@@ -14,7 +14,7 @@ func test_valores_iniciais_do_arquivo() -> void:
 	assert_eq(_regras.cartas_por_troca, 0, "D-03")
 	assert_true(_regras.erro_passa_a_vez, "D-04")
 	assert_true(_regras.repor_mao_apos_acerto, "D-05")
-	assert_eq(_regras.proporcao_distratoras, 1.0, "D-09")
+	assert_eq(_regras.proporcao_distratoras, 0.4, "D-09, D-22 (decisao exigir-2-a-4)")
 	assert_eq(_regras.quantidade_senhas, 4, "D-15")
 
 
