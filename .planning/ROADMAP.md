@@ -86,7 +86,7 @@ Plans:
   4. Pausar ou sair da partida pede confirmação, e o botão voltar do Android não encerra a partida sem perguntar
   5. Uma partida completa é jogada só com toque em um aparelho Android real, e a mesa aparece sem elementos cortados em 16:9, 20:9 e 4:3, com sílabas e palavras em maiúsculas grandes, sem serifa e com alto contraste
 
-**Plans:** 1/5 plans executed
+**Plans:** 2/5 plans executed
 
 Plans:
 **Wave 1**
@@ -95,7 +95,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 02-02-PLAN.md — Mesa jogável: senhas, faixa de vez, jogada em dois toques, acerto/erro/troca
+- [x] 02-02-PLAN.md — Mesa jogável: senhas, faixa de vez, jogada em dois toques, acerto/erro/troca
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
@@ -146,6 +146,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Fundação, regras e simulador | 8/8 | Complete   | 2026-11-17 |
-| 2. Partida completa jogável | 1/5 | In Progress|  |
+| 2. Partida completa jogável | 2/5 | In Progress|  |
 | 3. Arte, áudio e créditos | 0/TBD | Not started | - |
 | 4. Testes com adultos e entrega | 0/TBD | Not started | - |

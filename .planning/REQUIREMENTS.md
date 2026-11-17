@@ -37,14 +37,14 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 
 ### Mesa (interface)
 
-- [ ] **MESA-01**: Os jogadores veem as 4 palavras-senha, cada uma com ilustração grande e um espaço por sílaba (2 ou 3)
-- [ ] **MESA-02**: A palavra escrita aparece ou não junto da ilustração conforme a configuração
-- [ ] **MESA-03**: A mesa mostra apenas a mão do mago da vez, com indicação clara de quem está jogando
-- [ ] **MESA-04**: O mago joga com dois toques: toca na carta e depois no espaço
-- [ ] **MESA-05**: Cada sílaba colocada fica marcada com a cor e o símbolo do mago que a colocou
+- [x] **MESA-01**: Os jogadores veem as 4 palavras-senha, cada uma com ilustração grande e um espaço por sílaba (2 ou 3)
+- [x] **MESA-02**: A palavra escrita aparece ou não junto da ilustração conforme a configuração
+- [x] **MESA-03**: A mesa mostra apenas a mão do mago da vez, com indicação clara de quem está jogando
+- [x] **MESA-04**: O mago joga com dois toques: toca na carta e depois no espaço
+- [x] **MESA-05**: Cada sílaba colocada fica marcada com a cor e o símbolo do mago que a colocou
 - [ ] **MESA-06**: Cada mago vê seus pontos simbólicos, sem ranking nem comparação entre jogadores
 - [ ] **MESA-07**: O botão de comprar/trocar fica sempre visível e ganha destaque quando a mão não tem jogada
-- [ ] **MESA-08**: A mesa é usável em celular, tablet e PC (proporções 16:9, 20:9 e 4:3) sem elementos cortados
+- [x] **MESA-08**: A mesa é usável em celular, tablet e PC (proporções 16:9, 20:9 e 4:3) sem elementos cortados
 - [x] **MESA-09**: Sílabas e palavras aparecem em letras maiúsculas grandes, sem serifa e com alto contraste
 
 ### Cofre e fluxo
@@ -127,14 +127,14 @@ Preenchida na criação do roadmap (2026-11-11).
 | PART-09 | Phase 1 | Complete |
 | PART-10 | Phase 1 | Complete |
 | PART-11 | Phase 1 | Complete |
-| MESA-01 | Phase 2 | Pending |
-| MESA-02 | Phase 2 | Pending |
-| MESA-03 | Phase 2 | Pending |
-| MESA-04 | Phase 2 | Pending |
-| MESA-05 | Phase 2 | Pending |
+| MESA-01 | Phase 2 | Complete |
+| MESA-02 | Phase 2 | Complete |
+| MESA-03 | Phase 2 | Complete |
+| MESA-04 | Phase 2 | Complete |
+| MESA-05 | Phase 2 | Complete |
 | MESA-06 | Phase 2 | Pending |
 | MESA-07 | Phase 2 | Pending |
-| MESA-08 | Phase 2 | Pending |
+| MESA-08 | Phase 2 | Complete |
 | MESA-09 | Phase 2 | Complete |
 | COFR-01 | Phase 2 | Pending |
 | COFR-02 | Phase 2 | Pending |
