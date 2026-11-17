@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://cenas/mesa/mesa.gd" id="1_mesa"]
 [ext_resource type="Script" path="res://cenas/comum/simbolo_mago.gd" id="2_sm"]
 [ext_resource type="PackedScene" path="res://cenas/mesa/faixa_vez.tscn" id="3_fv"]
+
+[ext_resource type="Script" path="res://cenas/comum/icones_ponto.gd" id="4_ip"]
+[ext_resource type="PackedScene" path="res://cenas/mesa/painel_pausa.tscn" id="5_pp"]
 
 [node name="Mesa" type="Control"]
 layout_mode = 3
@@ -64,10 +67,42 @@ layout_mode = 2
 theme_type_variation = &"Rotulo32"
 text = "Vez do Mago"
 
+[node name="Pontos" type="Control" parent="Margem/Coluna/Barra/Indicador/Caixa"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("4_ip")
+
 [node name="Espacador" type="Control" parent="Margem/Coluna/Barra"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+
+[node name="BotaoPausa" type="Button" parent="Margem/Coluna/Barra"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "Pausa"
+theme_type_variation = &"BotaoSecundario"
+
+[node name="Barra1" type="ColorRect" parent="Margem/Coluna/Barra/BotaoPausa"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 25.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
+
+[node name="Barra2" type="ColorRect" parent="Margem/Coluna/Barra/BotaoPausa"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 18.0
+offset_right = 47.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
 
 [node name="CentroSenhas" type="CenterContainer" parent="Margem/Coluna"]
 custom_minimum_size = Vector2(0, 320)
@@ -132,3 +167,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Algo deu errado. Toque para voltar ao menu."
 horizontal_alignment = 1
+
+[node name="PainelPausa" parent="." instance=ExtResource("5_pp")]
+layout_mode = 1

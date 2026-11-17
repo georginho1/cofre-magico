@@ -14,6 +14,7 @@ var _selecionada: int = -1
 var _ocupado: bool = false
 var _cartas: Array[Button] = []
 var _senhas: Array[SenhaVisual] = []
+var _tween_botao: Tween
 
 @onready var _linha_senhas: HBoxContainer = $Margem/Coluna/CentroSenhas/LinhaSenhas
 @onready var _mao: HBoxContainer = $Margem/Coluna/FaixaMao/Mao
@@ -24,6 +25,9 @@ var _senhas: Array[SenhaVisual] = []
 @onready var _bloqueio: Control = $Bloqueio
 @onready var _faixa: FaixaVez = $FaixaVez
 @onready var _mensagem_erro: Label = $MensagemErro
+@onready var _pontos: IconesPonto = $Margem/Coluna/Barra/Indicador/Caixa/Pontos
+@onready var _botao_pausa: Button = $Margem/Coluna/Barra/BotaoPausa
+@onready var _pausa: PainelPausa = $PainelPausa
 
 
 func _ready() -> void:
@@ -43,6 +47,11 @@ func _ready() -> void:
 		_senhas.append(senha)
 	_botao_trocar.pressed.connect(_ao_tocar_trocar)
 	_faixa.pressed.connect(_ao_faixa_tocada)
+	_botao_trocar.resized.connect(_ajustar_pivot_botao)
+	_ajustar_pivot_botao()
+	_botao_pausa.pressed.connect(_abrir_pausa)
+	_pausa.continuar.connect(_fechar_pausa)
+	_pausa.sair.connect(_ao_sair)
 	_mostrar_faixa()
 
 
@@ -59,6 +68,7 @@ func _definir_ocupado(valor: bool) -> void:
 
 
 func _mostrar_faixa() -> void:
+	_pulsar_botao(false)
 	_definir_ocupado(true)
 	_mao.visible = false
 	var id: int = Sessao.id_do_indice(_partida.jogador_atual)
@@ -66,17 +76,65 @@ func _mostrar_faixa() -> void:
 	_faixa.visible = true
 	_circulo.configurar(id, Magos.COR_TEXTO[id], true, false)
 	_rotulo_vez.text = "Vez do Mago %s" % Magos.NOME[id]
+	_pontos.configurar(0, Magos.COR[id], 24)
 
 
 func _ao_faixa_tocada() -> void:
 	_faixa.visible = false
 	_reconstruir_mao()
+	_atualizar_indicador()
 	_mao.modulate.a = 0.0
 	_mao.visible = true
 	var tw: Tween = create_tween()
 	tw.tween_property(_mao, "modulate:a", 1.0, 0.2)
 	_selecionada = -1
 	_definir_ocupado(false)
+	_pulsar_botao(not _partida.existe_jogada())
+
+
+## Indicador so do mago da vez: cor, simbolo, nome e pontos como icones (D-10, D-11).
+func _atualizar_indicador() -> void:
+	var id: int = Sessao.id_do_indice(_partida.jogador_atual)
+	_circulo.configurar(id, Magos.COR_TEXTO[id], true, false)
+	_rotulo_vez.text = "Vez do Mago %s" % Magos.NOME[id]
+	_pontos.configurar(_partida.jogadores[_partida.jogador_atual].pontos, Magos.COR[id], 24)
+
+
+func _ajustar_pivot_botao() -> void:
+	_botao_trocar.pivot_offset = _botao_trocar.size / 2.0
+
+
+## Destaque sem alarme: violeta e pulso de escala quando nao ha jogada (MESA-07).
+func _pulsar_botao(ligar: bool) -> void:
+	if _tween_botao != null and _tween_botao.is_valid():
+		_tween_botao.kill()
+	_botao_trocar.scale = Vector2.ONE
+	_botao_trocar.theme_type_variation = &"BotaoPrimario" if ligar else &"BotaoSecundario"
+	if ligar:
+		_tween_botao = create_tween().set_loops()
+		_tween_botao.tween_property(_botao_trocar, "scale", Vector2(1.06, 1.06), 0.4)
+		_tween_botao.tween_property(_botao_trocar, "scale", Vector2.ONE, 0.4)
+
+
+func _abrir_pausa() -> void:
+	_pausa.abrir()
+
+
+func _fechar_pausa() -> void:
+	_pausa.fechar()
+
+
+func _ao_sair() -> void:
+	Sessao.limpar()
+	Sessao.ir_para(Sessao.CENA_MENU)
+
+
+## Esc e botao voltar do Android chegam aqui via Sessao; nunca encerra sem perguntar (COFR-05).
+func ao_voltar() -> void:
+	if _pausa.esta_aberto():
+		_pausa.voltar()
+	else:
+		_abrir_pausa()
 
 
 func _reconstruir_mao() -> void:
@@ -166,6 +224,8 @@ func _ao_tocar_espaco(p: int, e: int) -> void:
 			_mostrar_faixa()
 		_:
 			_definir_ocupado(false)
+			_atualizar_indicador()
+			_pulsar_botao(not _partida.existe_jogada())
 
 
 func _criar_fantasma(carta: Button) -> Button:
@@ -215,6 +275,7 @@ func _ao_tocar_trocar() -> void:
 	if _ocupado:
 		return
 	_definir_ocupado(true)
+	_pulsar_botao(false)
 	_limpar_destaques()
 	var tw: Tween = create_tween().set_parallel(true)
 	for c in _cartas:

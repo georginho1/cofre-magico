@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://cenas/mesa/painel_pausa.gd" id="1_pp"]
+
+[node name="PainelPausa" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_pp")
+
+[node name="Escurecer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0784314, 0.129412, 0.239216, 0.8)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Painel" type="PanelContainer" parent="Centro"]
+custom_minimum_size = Vector2(560, 400)
+layout_mode = 2
+mouse_filter = 0
+theme_type_variation = &"PainelSuperficie"
+
+[node name="Conteudo" type="VBoxContainer" parent="Centro/Painel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EstadoPausa" type="VBoxContainer" parent="Centro/Painel/Conteudo"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Centro/Painel/Conteudo/EstadoPausa"]
+layout_mode = 2
+theme_type_variation = &"Titulo48"
+text = "Pausa"
+horizontal_alignment = 1
+
+[node name="Continuar" type="Button" parent="Centro/Painel/Conteudo/EstadoPausa"]
+custom_minimum_size = Vector2(360, 96)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoPrimario"
+text = "Continuar"
+
+[node name="Sair" type="Button" parent="Centro/Painel/Conteudo/EstadoPausa"]
+custom_minimum_size = Vector2(360, 96)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoSecundario"
+text = "Sair da partida"
+
+[node name="EstadoConfirmar" type="VBoxContainer" parent="Centro/Painel/Conteudo"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Centro/Painel/Conteudo/EstadoConfirmar"]
+layout_mode = 2
+theme_type_variation = &"Titulo48"
+text = "Sair da partida?"
+horizontal_alignment = 1
+
+[node name="Aviso" type="Label" parent="Centro/Painel/Conteudo/EstadoConfirmar"]
+layout_mode = 2
+text = "A partida atual será perdida."
+horizontal_alignment = 1
+
+[node name="Sair" type="Button" parent="Centro/Painel/Conteudo/EstadoConfirmar"]
+custom_minimum_size = Vector2(360, 96)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoSecundario"
+text = "Sair"
+
+[node name="ContinuarJogando" type="Button" parent="Centro/Painel/Conteudo/EstadoConfirmar"]
+custom_minimum_size = Vector2(360, 96)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoPrimario"
+text = "Continuar jogando"
