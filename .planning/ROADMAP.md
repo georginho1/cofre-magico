@@ -20,7 +20,7 @@ O roteiro leva o Cofre Mágico de um repositório sem código até as builds de 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Fundação, regras e simulador** - Projeto rodando em Android real e PC; partida inteira jogada pelo núcleo de regras sem tela e medida por simulação (completed 2026-11-17)
-- [ ] **Phase 2: Partida completa jogável** - Até quatro magos jogam do menu à abertura do cofre em um único aparelho, com visual provisório
+- [x] **Phase 2: Partida completa jogável** - Até quatro magos jogam do menu à abertura do cofre em um único aparelho, com visual provisório (completed 2026-11-17)
 - [ ] **Phase 3: Arte, áudio e créditos** - Ilustrações de licença livre com créditos registrados e efeitos sonoros com mudo
 - [ ] **Phase 4: Testes com adultos e entrega** - Protocolo de teste aplicado e builds finais validadas no aparelho e na máquina da apresentação
 
@@ -86,7 +86,7 @@ Plans:
   4. Pausar ou sair da partida pede confirmação, e o botão voltar do Android não encerra a partida sem perguntar
   5. Uma partida completa é jogada só com toque em um aparelho Android real, e a mesa aparece sem elementos cortados em 16:9, 20:9 e 4:3, com sílabas e palavras em maiúsculas grandes, sem serifa e com alto contraste
 
-**Plans:** 4/5 plans executed
+**Plans:** 5/5 plans complete
 
 Plans:
 **Wave 1**
@@ -104,7 +104,7 @@ Plans:
 
 **Wave 4** *(blocked on Wave 3 completion)*
 
-- [ ] 02-05-PLAN.md — Teste ponta a ponta, builds e verificação em Android real (checkpoint humano)
+- [x] 02-05-PLAN.md — Teste ponta a ponta, builds e verificação em Android real (checkpoint humano)
 **UI hint**: yes
 
 ### Phase 3: Arte, áudio e créditos
@@ -146,6 +146,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Fundação, regras e simulador | 8/8 | Complete   | 2026-11-17 |
-| 2. Partida completa jogável | 4/5 | In Progress|  |
+| 2. Partida completa jogável | 5/5 | Complete   | 2026-11-17 |
 | 3. Arte, áudio e créditos | 0/TBD | Not started | - |
 | 4. Testes com adultos e entrega | 0/TBD | Not started | - |
