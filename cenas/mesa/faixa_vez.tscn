@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://cenas/mesa/faixa_vez.gd" id="1_fv"]
+[ext_resource type="Script" path="res://cenas/comum/simbolo_mago.gd" id="2_sm"]
+
+[node name="FaixaVez" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+focus_mode = 0
+flat = true
+script = ExtResource("1_fv")
+
+[node name="Painel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Caixa" type="HBoxContainer" parent="Painel"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Simbolo" type="Control" parent="Painel/Caixa"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("2_sm")
+
+[node name="Textos" type="VBoxContainer" parent="Painel/Caixa"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Titulo" type="Label" parent="Painel/Caixa/Textos"]
+layout_mode = 2
+theme_type_variation = &"Titulo48"
+text = "Vez do Mago"
+
+[node name="Subtexto" type="Label" parent="Painel/Caixa/Textos"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Toque para começar"

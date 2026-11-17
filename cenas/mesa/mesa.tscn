@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://cenas/mesa/mesa.gd" id="1_mesa"]
+[ext_resource type="Script" path="res://cenas/comum/simbolo_mago.gd" id="2_sm"]
+[ext_resource type="PackedScene" path="res://cenas/mesa/faixa_vez.tscn" id="3_fv"]
+
+[node name="Mesa" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mesa")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0784314, 0.129412, 0.239216, 1)
+
+[node name="Margem" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Coluna" type="VBoxContainer" parent="Margem"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Barra" type="HBoxContainer" parent="Margem/Coluna"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Indicador" type="PanelContainer" parent="Margem/Coluna/Barra"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PainelSuperficie"
+
+[node name="Caixa" type="HBoxContainer" parent="Margem/Coluna/Barra/Indicador"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Circulo" type="Control" parent="Margem/Coluna/Barra/Indicador/Caixa"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("2_sm")
+
+[node name="RotuloVez" type="Label" parent="Margem/Coluna/Barra/Indicador/Caixa"]
+layout_mode = 2
+theme_type_variation = &"Rotulo32"
+text = "Vez do Mago"
+
+[node name="Espacador" type="Control" parent="Margem/Coluna/Barra"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CentroSenhas" type="CenterContainer" parent="Margem/Coluna"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LinhaSenhas" type="HBoxContainer" parent="Margem/Coluna/CentroSenhas"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="FaixaMao" type="HBoxContainer" parent="Margem/Coluna"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Mao" type="HBoxContainer" parent="Margem/Coluna/FaixaMao"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BotaoTrocar" type="Button" parent="Margem/Coluna/FaixaMao"]
+custom_minimum_size = Vector2(360, 120)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"BotaoSecundario"
+text = "Trocar cartas"
+
+[node name="CamadaFantasma" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloqueio" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FaixaVez" parent="." instance=ExtResource("3_fv")]
+visible = false
+layout_mode = 1
+
+[node name="MensagemErro" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Algo deu errado. Toque para voltar ao menu."
+horizontal_alignment = 1
