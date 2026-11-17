@@ -12,13 +12,13 @@ Um grupo de até quatro jogadores, em um único aparelho, consegue jogar uma par
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Sorteio automático de 4 palavras-senha entre as 30 palavras a cada partida (núcleo de regras) — Validated in Phase 1: Fundação, regras e simulador
+- ✓ Baralho de 100 cartas de sílabas (22 sílabas CV distintas) com a distribuição do protótipo físico; recorte por partida parametrizado — Validated in Phase 1
+- ✓ Regras de mão/compra/troca parametrizadas em `ConfigRegras` (`dados/regras_padrao.tres`) e ajustadas por simulação — Validated in Phase 1
 
 ### Active
 
 - [ ] Partida para 1 a 4 jogadores no mesmo aparelho, em turnos (pass-and-play), cada um como um mago de cor (vermelho, azul, verde, amarelo)
-- [ ] Sorteio automático de 4 palavras-senha entre as 30 palavras ilustradas a cada partida
-- [ ] Baralho de 100 cartas de sílabas (22 sílabas CV distintas) com a distribuição do protótipo físico como base; cada partida usa um recorte concentrado nas sílabas das senhas sorteadas
 - [ ] Palavra escrita junto da ilustração configurável (ligada ou desligada)
 - [ ] Mesa mostra apenas a mão do mago da vez
 - [ ] Efeitos sonoros básicos com botão de mudo
@@ -29,7 +29,6 @@ Um grupo de até quatro jogadores, em um único aparelho, consegue jogar uma par
 - [ ] Ao completar as quatro senhas, o cofre se abre com uma recompensa coletiva
 - [ ] Interface adequada ao público infantil: instruções curtas, letras grandes, alto contraste, imagens de apoio
 - [ ] Builds exportadas para Android (APK) e PC (desktop) para a apresentação
-- [ ] Regras de mão/compra/troca parametrizadas para permitir ajuste durante os testes
 
 ### Out of Scope
 
@@ -99,6 +98,11 @@ CA×8, TA×8, TO×8, LA×7, PA×7, BO×6, MA×6, SA×6, GA×5, NO×5, GO×4, LO�
 | Só a mão do mago da vez na tela | Cartas maiores no celular; quem está ao lado vê e pode ajudar | — Pending |
 | Áudio só com efeitos sonoros | Palavras e sílabas faladas exigem gravação; ficam para v2 | — Pending |
 | Valores iniciais das regras (D-22): proporcao_distratoras=0.40, tamanho_mao=5, silabas_por_turno=1, cartas_por_troca=0, erro_passa_a_vez=true, quantidade_senhas=4, baralho de partida=100 cartas (tamanho_baralho_partida=0) | Simulador, 5000 partidas, semente 2026, perfil perfeito: turnos sem ponto 36.4/33.1/30.2/28.0% (1 a 4 magos); D-18 (<=35%) exigida com 2 a 4 magos, so relatada com 1 mago (falha aceita); D-19 mago sem silaba com 4 magos 0.7% (<=5%); D-20 100% terminam. Aprovado por georginho1 em 2026-11-17. Pendente (D-14): palavras mais lentas TAPETE, SOPA, SACO, SAPO, PIPA, SINO, TATU. Evidencia: .planning/phases/01-funda-o-regras-e-simulador/01-SIMULACAO.md | Decidido |
+| Troca de mão compra antes de devolver os descartes (WR-02 da revisão de código) | Evita receber a mesma mão de volta com o baralho quase vazio; após a mudança, turnos sem ponto 33.8/31.2/28.3/26.6% (1 a 4 magos), D-18/D-19/D-20 continuam PASS. Aprovado em 2026-11-17 | Decidido |
+
+## Current State
+
+Phase 1 concluída em 2026-11-17: projeto Godot 4.7.2 exportando para PC e Android, núcleo de regras sem tela (sorteio, turnos, troca, contribuições, vitória) coberto por 60 testes GUT, e simulador headless usado para fixar os valores de regra. Pendência: rodar o APK arm64 num aparelho Android físico (FUND-02, ver 01-HUMAN-UAT.md). A tela atual é o placeholder do esqueleto; a interface do jogo vem na Phase 2.
 
 ## Evolution
 
@@ -118,4 +122,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-11-11 after initialization*
+*Last updated: 2026-11-17 after Phase 1 completion*
