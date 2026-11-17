@@ -21,22 +21,28 @@ func ativar_magos(ids: Array[int]) -> void:
 
 
 func id_do_indice(indice: int) -> int:
+	if indice < 0 or indice >= magos_ativos.size():
+		push_error("indice de mago fora dos limites: %d" % indice)
+		return 0
 	return magos_ativos[indice]
 
 
-func nova_partida() -> void:
+## Retorna false (e deixa `partida` nula) se os dados nao puderem ser carregados.
+func nova_partida() -> bool:
+	partida = null
 	var cfg: ConfigRegras = load("res://dados/regras_padrao.tres") as ConfigRegras
 	var bib: BibliotecaPalavras = load("res://dados/biblioteca_palavras.tres") as BibliotecaPalavras
 	var dist: DistribuicaoBaralho = load("res://dados/distribuicao_baralho.tres") as DistribuicaoBaralho
 	if cfg == null or bib == null or dist == null:
 		push_error("recursos de dados ausentes ou invalidos")
-		return
+		return false
 	var rng := RandomNumberGenerator.new()
 	if cfg.semente > 0:
 		rng.seed = cfg.semente
 	else:
 		rng.randomize()
 	partida = Partida.new(cfg, bib, dist, magos_ativos.size(), rng)
+	return true
 
 
 func limpar() -> void:

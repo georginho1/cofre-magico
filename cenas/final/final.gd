@@ -49,7 +49,9 @@ func _ready() -> void:
 
 
 func _jogar_de_novo() -> void:
-	Sessao.nova_partida()
+	if not Sessao.nova_partida():
+		_ir_ao_menu()
+		return
 	Sessao.ir_para(Sessao.CENA_MESA)
 
 

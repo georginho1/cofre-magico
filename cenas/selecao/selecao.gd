@@ -58,7 +58,9 @@ func _atualizar_estado() -> void:
 
 func _ao_comecar() -> void:
 	Sessao.ativar_magos(_acesos())
-	Sessao.nova_partida()
+	if not Sessao.nova_partida():
+		Sessao.ir_para(Sessao.CENA_MENU)
+		return
 	Sessao.ir_para(Sessao.CENA_MESA)
 
 
