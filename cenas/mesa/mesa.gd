@@ -283,17 +283,22 @@ func _ao_tocar_trocar() -> void:
 	_definir_ocupado(true)
 	_pulsar_botao(false)
 	_limpar_destaques()
-	var tw: Tween = create_tween().set_parallel(true)
-	for c in _cartas:
-		var f: Button = _criar_fantasma(c)
-		c.modulate.a = 0.0
-		tw.tween_property(f, "global_position:y", f.global_position.y + 260.0, 0.3)
-		tw.tween_property(f, "modulate:a", 0.0, 0.3)
-	await tw.finished
-	if not is_inside_tree():
-		return
+	if not _cartas.is_empty():
+		var tw: Tween = create_tween().set_parallel(true)
+		for c in _cartas:
+			var f: Button = _criar_fantasma(c)
+			c.modulate.a = 0.0
+			tw.tween_property(f, "global_position:y", f.global_position.y + 260.0, 0.3)
+			tw.tween_property(f, "modulate:a", 0.0, 0.3)
+		await tw.finished
+		if not is_inside_tree():
+			return
 	for f in _fantasmas.get_children():
 		f.queue_free()
 	_selecionada = -1
-	_partida.trocar_mao()
+	if _partida.trocar_mao() == ResultadoJogada.Tipo.INVALIDO:
+		_reconstruir_mao()
+		_definir_ocupado(false)
+		_atualizar_indicador()
+		return
 	_mostrar_faixa()
