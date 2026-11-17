@@ -98,6 +98,7 @@ CA×8, TA×8, TO×8, LA×7, PA×7, BO×6, MA×6, SA×6, GA×5, NO×5, GO×4, LO�
 | Palavra escrita configurável | Funciona como nível de dificuldade e reduz a dependência da qualidade das ilustrações | — Pending |
 | Só a mão do mago da vez na tela | Cartas maiores no celular; quem está ao lado vê e pode ajudar | — Pending |
 | Áudio só com efeitos sonoros | Palavras e sílabas faladas exigem gravação; ficam para v2 | — Pending |
+| Valores iniciais das regras (D-22): proporcao_distratoras=0.40, tamanho_mao=5, silabas_por_turno=1, cartas_por_troca=0, erro_passa_a_vez=true, quantidade_senhas=4, baralho de partida=100 cartas (tamanho_baralho_partida=0) | Simulador, 5000 partidas, semente 2026, perfil perfeito: turnos sem ponto 36.4/33.1/30.2/28.0% (1 a 4 magos); D-18 (<=35%) exigida com 2 a 4 magos, so relatada com 1 mago (falha aceita); D-19 mago sem silaba com 4 magos 0.7% (<=5%); D-20 100% terminam. Aprovado por georginho1 em 2026-11-17. Pendente (D-14): palavras mais lentas TAPETE, SOPA, SACO, SAPO, PIPA, SINO, TATU. Evidencia: .planning/phases/01-funda-o-regras-e-simulador/01-SIMULACAO.md | Decidido |
 
 ## Evolution
 
