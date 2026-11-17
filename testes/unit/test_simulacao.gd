@@ -86,6 +86,8 @@ func test_limite_de_turnos_nao_terminada() -> void:
 	assert_eq(r["partidas"], 3)
 	assert_lt(r["terminadas"], r["partidas"])
 	assert_eq(r["terminadas"], 0)
+	# WR-06: palavras de partidas abortadas nao entram no impacto por palavra.
+	assert_true(r["por_palavra"].is_empty())
 
 
 func test_por_palavra_soma_aparicoes() -> void:

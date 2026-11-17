@@ -33,10 +33,10 @@ static func rodar(
 		var rng := RandomNumberGenerator.new()
 		rng.seed = hash([semente, i, n_magos])
 		var partida := Partida.new(cfg, bib, dist, n_magos, rng)
+		# Dados por palavra desta partida; so entram em `palavras` se ela terminar (WR-06).
+		var pal_local: Dictionary = {}
 		for w in partida.palavras:
-			var reg: Dictionary = palavras.get(w.dados.texto, {"aparicoes": 0, "soma_turnos": 0, "completadas": 0, "ultima": 0})
-			reg["aparicoes"] += 1
-			palavras[w.dados.texto] = reg
+			pal_local[w.dados.texto] = {"aparicoes": 1, "soma_turnos": 0, "completadas": 0, "ultima": 0}
 		var completa_antes: Array = []
 		for w in partida.palavras:
 			completa_antes.append(false)
@@ -68,7 +68,7 @@ static func rodar(
 					for k in range(partida.palavras.size()):
 						if not completa_antes[k] and partida.palavras[k].completa():
 							completa_antes[k] = true
-							var reg2: Dictionary = palavras[partida.palavras[k].dados.texto]
+							var reg2: Dictionary = pal_local[partida.palavras[k].dados.texto]
 							reg2["soma_turnos"] += turnos + 1
 							reg2["completadas"] += 1
 							if partida.concluida():
@@ -94,6 +94,12 @@ static func rodar(
 		if estourou:
 			continue
 		terminadas += 1
+		for texto in pal_local:
+			var loc: Dictionary = pal_local[texto]
+			var reg: Dictionary = palavras.get(texto, {"aparicoes": 0, "soma_turnos": 0, "completadas": 0, "ultima": 0})
+			for chave in loc:
+				reg[chave] += loc[chave]
+			palavras[texto] = reg
 		turnos_por_partida.append(turnos)
 		total_turnos += turnos
 		sem_ponto += sp
