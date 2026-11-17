@@ -8,12 +8,16 @@ var _contador: int = 0
 
 
 func _ready() -> void:
-	var regras: ConfigRegras = (load("res://dados/regras_padrao.tres") as ConfigRegras).duplicate() as ConfigRegras
+	_botao.pressed.connect(_ao_tocar)
+	_atualizar_contagem()
+	var base: ConfigRegras = load("res://dados/regras_padrao.tres") as ConfigRegras
+	if base == null:
+		push_error("regras_padrao.tres ausente ou invalido")
+		return
+	var regras: ConfigRegras = base.duplicate() as ConfigRegras
 	regras.normalizar()
 	_rotulo_mao.text = "Mão: %d cartas" % regras.tamanho_mao
 	print("COFRE_MAGICO_INICIAL tamanho_mao=%d" % regras.tamanho_mao)
-	_botao.pressed.connect(_ao_tocar)
-	_atualizar_contagem()
 
 
 func _ao_tocar() -> void:
