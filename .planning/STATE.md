@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: ready_to_plan
-stopped_at: Phase 01 complete (8/8) — ready to discuss Phase 2
-last_updated: 2026-11-17T16:00:34.710Z
+status: planning
+stopped_at: Phase 2 context gathered
+last_updated: "2026-11-17T16:40:21.105Z"
 last_activity: 2026-11-17
 progress:
   total_phases: 4
@@ -97,6 +97,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-11-17T15:22:51.633Z
-Stopped at: Completed 01-08-PLAN.md
-Resume file: None
+Last session: 2026-11-17T16:40:21.086Z
+Stopped at: Phase 2 context gathered
+Resume file: .planning/phases/02-partida-completa-jog-vel/02-CONTEXT.md
