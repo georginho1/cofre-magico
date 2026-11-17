@@ -10,7 +10,7 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 ### Fundação
 
 - [x] **FUND-01**: A equipe abre o projeto no Godot 4.7.2 (renderizador Compatibility, base 1280×720, paisagem) e executa a cena inicial no PC
-- [ ] **FUND-02**: Um APK do projeto é instalado e executado em um aparelho Android real
+- [ ] **FUND-02**: Um APK do projeto é instalado e executado em um aparelho Android real (verificado em emulador x86_64; confirmacao em aparelho fisico pendente)
 - [x] **FUND-03**: Um executável de PC do projeto é gerado e executado
 - [x] **FUND-04**: Os testes automatizados das regras (GUT) rodam com um único comando
 

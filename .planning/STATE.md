@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Phase 1 context gathered
-last_updated: "2026-11-17T13:32:25.570Z"
+last_updated: "2026-11-17T15:03:06.189Z"
 last_activity: 2026-11-17
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 8
-  completed_plans: 6
+  completed_plans: 7
   percent: 0
 ---
 
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-11-11)
 ## Current Position
 
 Phase: 01 (funda-o-regras-e-simulador) — EXECUTING
-Plan: 7 of 8
+Plan: 8 of 8
 Status: Ready to execute
 Last activity: 2026-11-17
 
-Progress: [████████░░] 75%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ Progress: [████████░░] 75%
 | Phase 01 P05 | 10min | 2 tasks | 6 files |
 | Phase 01 P06 | 8min | 2 tasks | 3 files |
 | Phase 01 P07 | 25min | 2 tasks | 9 files |
+| Phase 01 P02 | n/a | 4 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -81,6 +82,7 @@ None yet.
 - [Phase 1]: Itens do Godot a conferir no editor: min SDK do template 4.7.2, arquiteturas do preset Android, opção de orientação, versão exata do GUT
 - [Phase 1 → 3]: O levantamento das 30 ilustrações e licenças deve começar em paralelo já na Fase 1; candidatas a problema: CANO, GOLA, MOLA, MATO, PANO, SACO, TAPETE, TATU, CARA; a origem das imagens do PDF físico ainda é desconhecida
 - [Phase 2]: Decisões em aberto a fechar com protótipo no aparelho: confirmação na passagem de vez, destaque dos espaços válidos, tamanho físico dos alvos de toque
+- FUND-02: APK arm64-v8a ainda nao testado em aparelho Android fisico (so emulador x86_64); decidir armeabi-v7a
 
 ## Deferred Items
 
@@ -92,6 +94,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-11-17T13:32:25.561Z
+Last session: 2026-11-17T15:03:00.504Z
 Stopped at: Phase 1 context gathered
 Resume file: None
