@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://cenas/comum/senha_visual.gd" id="1_sv"]
+[ext_resource type="Texture2D" path="res://arte/provisoria/placeholder_palavra.svg" id="2_tex"]
+
+[node name="SenhaVisual" type="VBoxContainer"]
+custom_minimum_size = Vector2(296, 0)
+theme_override_constants/separation = 8
+script = ExtResource("1_sv")
+
+[node name="Ilustracao" type="Control" parent="."]
+custom_minimum_size = Vector2(296, 160)
+layout_mode = 2
+
+[node name="Fundo" type="ColorRect" parent="Ilustracao"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.862745, 0.921569, 0.980392, 1)
+
+[node name="Imagem" type="TextureRect" parent="Ilustracao"]
+custom_minimum_size = Vector2(296, 160)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_tex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RotuloPlaceholder" type="Label" parent="Ilustracao"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.0784314, 0.129412, 0.239216, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="RotuloEscrito" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+clip_text = true
+
+[node name="LinhaEspacos" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
