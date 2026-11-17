@@ -19,7 +19,7 @@ O roteiro leva o Cofre Mágico de um repositório sem código até as builds de 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Fundação, regras e simulador** - Projeto rodando em Android real e PC; partida inteira jogada pelo núcleo de regras sem tela e medida por simulação
+- [x] **Phase 1: Fundação, regras e simulador** - Projeto rodando em Android real e PC; partida inteira jogada pelo núcleo de regras sem tela e medida por simulação (completed 2026-11-17)
 - [ ] **Phase 2: Partida completa jogável** - Até quatro magos jogam do menu à abertura do cofre em um único aparelho, com visual provisório
 - [ ] **Phase 3: Arte, áudio e créditos** - Ilustrações de licença livre com créditos registrados e efeitos sonoros com mudo
 - [ ] **Phase 4: Testes com adultos e entrega** - Protocolo de teste aplicado e builds finais validadas no aparelho e na máquina da apresentação
@@ -40,7 +40,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. A equipe muda um valor no arquivo de configuração (tamanho da mão, troca, número de senhas, tamanho do baralho da partida) e o relatório do simulador muda, sem nenhuma alteração de código
   5. Os valores iniciais das regras foram escolhidos com base nos números do simulador e estão registrados como decisão no PROJECT.md
 
-**Plans:** 7/8 plans executed
+**Plans:** 8/8 plans complete
 
 Plans:
 **Wave 1**
@@ -70,7 +70,7 @@ Plans:
 
 **Wave 7** *(blocked on Wave 6 completion)*
 
-- [ ] 01-08-PLAN.md — Varredura, decisão dos valores finais, PROJECT.md e builds finais
+- [x] 01-08-PLAN.md — Varredura, decisão dos valores finais, PROJECT.md e builds finais
 
 ### Phase 2: Partida completa jogável
 
@@ -127,7 +127,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Fundação, regras e simulador | 7/8 | In Progress|  |
+| 1. Fundação, regras e simulador | 8/8 | Complete   | 2026-11-17 |
 | 2. Partida completa jogável | 0/TBD | Not started | - |
 | 3. Arte, áudio e créditos | 0/TBD | Not started | - |
 | 4. Testes com adultos e entrega | 0/TBD | Not started | - |
