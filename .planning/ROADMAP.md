@@ -40,7 +40,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. A equipe muda um valor no arquivo de configuração (tamanho da mão, troca, número de senhas, tamanho do baralho da partida) e o relatório do simulador muda, sem nenhuma alteração de código
   5. Os valores iniciais das regras foram escolhidos com base nos números do simulador e estão registrados como decisão no PROJECT.md
 
-**Plans:** 2/8 plans executed
+**Plans:** 3/8 plans executed
 
 Plans:
 **Wave 1**
@@ -54,7 +54,7 @@ Plans:
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 01-04-PLAN.md — Dados: 30 palavras e 100 cartas com testes de integridade
+- [x] 01-04-PLAN.md — Dados: 30 palavras e 100 cartas com testes de integridade
 
 **Wave 4** *(blocked on Wave 3 completion)*
 
@@ -127,7 +127,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Fundação, regras e simulador | 2/8 | In Progress|  |
+| 1. Fundação, regras e simulador | 3/8 | In Progress|  |
 | 2. Partida completa jogável | 0/TBD | Not started | - |
 | 3. Arte, áudio e créditos | 0/TBD | Not started | - |
 | 4. Testes com adultos e entrega | 0/TBD | Not started | - |

@@ -16,8 +16,8 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 
 ### Conteúdo
 
-- [ ] **CONT-01**: As 30 palavras-senha existem como dados, cada uma com suas sílabas explícitas e sua ilustração
-- [ ] **CONT-02**: A distribuição das 100 cartas de sílabas (22 distintas) existe como dados, igual à do protótipo físico
+- [x] **CONT-01**: As 30 palavras-senha existem como dados, cada uma com suas sílabas explícitas e sua ilustração
+- [x] **CONT-02**: A distribuição das 100 cartas de sílabas (22 distintas) existe como dados, igual à do protótipo físico
 - [ ] **CONT-03**: Cada palavra tem uma ilustração de licença livre, com fonte, autor e licença registrados em um arquivo de créditos
 - [ ] **CONT-04**: O jogador pode abrir uma tela de créditos com as atribuições exigidas pelas licenças
 
@@ -112,8 +112,8 @@ Preenchida na criação do roadmap (2026-11-11).
 | FUND-02 | Phase 1 | Pending |
 | FUND-03 | Phase 1 | Complete |
 | FUND-04 | Phase 1 | Complete |
-| CONT-01 | Phase 1 | Pending |
-| CONT-02 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Complete |
+| CONT-02 | Phase 1 | Complete |
 | CONT-03 | Phase 3 | Pending |
 | CONT-04 | Phase 3 | Pending |
 | PART-01 | Phase 2 | Pending |
