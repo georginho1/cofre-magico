@@ -15,20 +15,20 @@ Um grupo de até quatro jogadores, em um único aparelho, consegue jogar uma par
 - ✓ Sorteio automático de 4 palavras-senha entre as 30 palavras a cada partida (núcleo de regras) — Validated in Phase 1: Fundação, regras e simulador
 - ✓ Baralho de 100 cartas de sílabas (22 sílabas CV distintas) com a distribuição do protótipo físico; recorte por partida parametrizado — Validated in Phase 1
 - ✓ Regras de mão/compra/troca parametrizadas em `ConfigRegras` (`dados/regras_padrao.tres`) e ajustadas por simulação — Validated in Phase 1
+- ✓ Partida para 1 a 4 jogadores no mesmo aparelho, em turnos (pass-and-play), cada um como um mago de cor (vermelho, azul, verde, amarelo) — Validated in Phase 2: Partida completa jogável
+- ✓ Palavra escrita junto da ilustração configurável (ligada ou desligada) — Validated in Phase 2: Partida completa jogável
+- ✓ Mesa mostra apenas a mão do mago da vez — Validated in Phase 2: Partida completa jogável
+- ✓ Cada mago tem uma mão de cartas; no turno joga uma sílaba em uma palavra-senha ou compra/troca do baralho — Validated in Phase 2: Partida completa jogável
+- ✓ O jogo valida sozinho se a sílaba está correta para a posição escolhida (sem exposição pública de erro) — Validated in Phase 2: Partida completa jogável
+- ✓ Cada sílaba correta é marcada com a cor do mago autor e rende um ponto simbólico — Validated in Phase 2: Partida completa jogável
+- ✓ Progresso visível pelo preenchimento das palavras-senha — Validated in Phase 2: Partida completa jogável
+- ✓ Ao completar as quatro senhas, o cofre se abre com uma recompensa coletiva — Validated in Phase 2: Partida completa jogável
+- ✓ Builds exportadas para Android (APK) e PC (desktop) para a apresentação — Validated in Phase 2: Partida completa jogável
 
 ### Active
 
-- [ ] Partida para 1 a 4 jogadores no mesmo aparelho, em turnos (pass-and-play), cada um como um mago de cor (vermelho, azul, verde, amarelo)
-- [ ] Palavra escrita junto da ilustração configurável (ligada ou desligada)
-- [ ] Mesa mostra apenas a mão do mago da vez
 - [ ] Efeitos sonoros básicos com botão de mudo
-- [ ] Cada mago tem uma mão de cartas; no turno joga uma sílaba em uma palavra-senha ou compra/troca do baralho
-- [ ] O jogo valida sozinho se a sílaba está correta para a posição escolhida (sem exposição pública de erro)
-- [ ] Cada sílaba correta é marcada com a cor do mago autor e rende um ponto simbólico
-- [ ] Progresso visível pelo preenchimento das palavras-senha
-- [ ] Ao completar as quatro senhas, o cofre se abre com uma recompensa coletiva
 - [ ] Interface adequada ao público infantil: instruções curtas, letras grandes, alto contraste, imagens de apoio
-- [ ] Builds exportadas para Android (APK) e PC (desktop) para a apresentação
 
 ### Out of Scope
 
@@ -102,7 +102,7 @@ CA×8, TA×8, TO×8, LA×7, PA×7, BO×6, MA×6, SA×6, GA×5, NO×5, GO×4, LO�
 
 ## Current State
 
-Phase 1 concluída em 2026-11-17: projeto Godot 4.7.2 exportando para PC e Android, núcleo de regras sem tela (sorteio, turnos, troca, contribuições, vitória) coberto por 60 testes GUT, e simulador headless usado para fixar os valores de regra. Pendência: rodar o APK arm64 num aparelho Android físico (FUND-02, ver 01-HUMAN-UAT.md). A tela atual é o placeholder do esqueleto; a interface do jogo vem na Phase 2.
+Phase 2 concluída em 2026-11-17: partida completa jogável de ponta a ponta — menu, seleção de 1 a 4 magos, mesa com faixa de vez, mão só do mago da vez, jogada por dois toques, acerto com cor/símbolo do autor, erro sem punição visível, troca de cartas, pontos simbólicos, pausa com confirmação (Esc/voltar do Android), cofre que abre e tela final de contribuições sem ranking. 89 testes GUT passando; APK e exe exportados e partida completa conferida em Android real e em 4 proporções no PC (aprovado pelo usuário). Revisão de código (02-REVIEW.md) deixou 4 avisos abertos (WR-01..04) para correção. Arte final, áudio e créditos vêm na Phase 3.
 
 ## Evolution
 
@@ -122,4 +122,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-11-17 after Phase 1 completion*
+*Last updated: 2026-11-17 after Phase 2 completion*
