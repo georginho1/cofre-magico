@@ -150,8 +150,11 @@ func trocar_mao() -> ResultadoJogada.Tipo:
 		for k in escolhidos:
 			devolvidas.append(jog.mao[k])
 			jog.mao.remove_at(k)
+	# Compra antes de devolver: as cartas descartadas nao voltam na mesma troca (WR-02).
+	jog.mao.append_array(baralho.comprar(devolvidas.size()))
 	baralho.devolver(devolvidas)
 	baralho.embaralhar(rng)
+	# Baralho com menos cartas que o descarte: completa com o que voltou.
 	_repor(jog)
 	mao_trocada.emit(jogador_atual)
 	_passar_a_vez()

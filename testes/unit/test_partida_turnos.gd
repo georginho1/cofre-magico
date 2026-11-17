@@ -159,6 +159,19 @@ func test_trocar_mao_passa_a_vez_mesmo_com_jogada() -> void:
 	assert_eq(p.jogador_atual, 1)
 
 
+func test_trocar_compra_antes_de_devolver() -> void:
+	var p := _nova(17, 2)
+	var n: int = p.jogadores[0].mao.size()
+	assert_true(p.baralho.tamanho() >= n)
+	# comprar() tira do fim do baralho: a nova mao sao as ultimas n cartas, em ordem inversa.
+	var esperadas: Array[String] = []
+	for k in range(n):
+		esperadas.append(p.baralho.cartas[p.baralho.tamanho() - 1 - k])
+	assert_eq(p.trocar_mao(), ResultadoJogada.Tipo.TROCOU)
+	assert_eq(p.jogadores[0].mao, esperadas)
+	assert_true(p.invariantes_ok())
+
+
 func test_trocar_parcial() -> void:
 	_cfg.cartas_por_troca = 2
 	var p := _nova(10, 2)
@@ -176,7 +189,7 @@ func test_baralho_vazio_e_mao_vazia() -> void:
 	p.cartas_total = _somar_mao(p) + p.baralho.tamanho() + p.cartas_colocadas()
 	assert_eq(p.trocar_mao(), ResultadoJogada.Tipo.TROCOU)
 	assert_eq(p.jogador_atual, 1)
-	# baralho vazio: mao cheia devolvida e recomprada integralmente
+	# baralho vazio: nada a comprar antes; a mao devolvida volta integralmente
 	p.baralho.cartas.clear()
 	assert_eq(p.trocar_mao(), ResultadoJogada.Tipo.TROCOU)
 	assert_eq(p.jogadores[1].mao.size(), _cfg.tamanho_mao)
