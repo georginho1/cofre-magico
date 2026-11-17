@@ -86,7 +86,25 @@ Plans:
   4. Pausar ou sair da partida pede confirmação, e o botão voltar do Android não encerra a partida sem perguntar
   5. Uma partida completa é jogada só com toque em um aparelho Android real, e a mesa aparece sem elementos cortados em 16:9, 20:9 e 4:3, com sílabas e palavras em maiúsculas grandes, sem serifa e com alto contraste
 
-**Plans:** TBD
+**Plans:** 5 plans
+
+Plans:
+**Wave 1**
+
+- [ ] 02-01-PLAN.md — Fundação da interface: fonte Andika, Theme global, autoload Sessao, menu e seleção de magos
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 02-02-PLAN.md — Mesa jogável: senhas, faixa de vez, jogada em dois toques, acerto/erro/troca
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 02-03-PLAN.md — Pontos simbólicos, destaque do botão trocar, pausa e botão voltar
+- [ ] 02-04-PLAN.md — Cofre, tela final e "Jogar de novo"
+
+**Wave 4** *(blocked on Wave 3 completion)*
+
+- [ ] 02-05-PLAN.md — Teste ponta a ponta, builds e verificação em Android real (checkpoint humano)
 **UI hint**: yes
 
 ### Phase 3: Arte, áudio e créditos
