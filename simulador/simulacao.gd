@@ -19,7 +19,10 @@ static func rodar(
 	var total_turnos: int = 0
 	var sem_ponto: int = 0
 	var por_troca: int = 0
+	## Turnos com pelo menos um erro (independe de como o turno terminou).
 	var por_erro: int = 0
+	## Total de acoes com resultado ERRO.
+	var erros_acoes: int = 0
 	var zerados: int = 0
 	var soma_pontos: int = 0
 	var soma_turnos_mago: float = 0.0
@@ -43,10 +46,12 @@ static func rodar(
 		var sp: int = 0
 		var tr: int = 0
 		var er: int = 0
+		var ea: int = 0
 		var estourou: bool = false
 		while not partida.concluida():
 			var t0: int = partida.turnos_jogados
 			var teve_acerto: bool = false
+			var teve_erro: bool = false
 			var ultima: ResultadoJogada.Tipo = ResultadoJogada.Tipo.INVALIDO
 			while partida.turnos_jogados == t0 and not partida.concluida():
 				if acoes >= limite:
@@ -68,20 +73,23 @@ static func rodar(
 							reg2["completadas"] += 1
 							if partida.concluida():
 								reg2["ultima"] += 1
+				elif ultima == ResultadoJogada.Tipo.ERRO:
+					teve_erro = true
+					ea += 1
 				elif ultima == ResultadoJogada.Tipo.INVALIDO:
 					estourou = true
 					break
 			if estourou:
 				break
 			turnos += 1
+			if teve_erro:
+				er += 1
 			if teve_acerto or partida.concluida():
 				pass
-			elif ultima == ResultadoJogada.Tipo.TROCOU:
-				sp += 1
-				tr += 1
 			else:
 				sp += 1
-				er += 1
+				if ultima == ResultadoJogada.Tipo.TROCOU:
+					tr += 1
 
 		if estourou:
 			continue
@@ -91,6 +99,7 @@ static func rodar(
 		sem_ponto += sp
 		por_troca += tr
 		por_erro += er
+		erros_acoes += ea
 		soma_turnos_mago += float(turnos) / float(partida.jogadores.size())
 		var zerado: bool = false
 		for j in partida.jogadores:
@@ -130,6 +139,7 @@ static func rodar(
 		"pct_turnos_sem_ponto": float(sem_ponto) / tt,
 		"pct_turnos_troca": float(por_troca) / tt,
 		"pct_turnos_erro": float(por_erro) / tt,
+		"erros_por_turno": float(erros_acoes) / tt,
 		"pct_partidas_mago_zerado": float(zerados) / term,
 		"pontos_medios_por_mago": float(soma_pontos) / (term * float(n_magos)),
 		"por_palavra": por_palavra,

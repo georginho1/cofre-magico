@@ -91,7 +91,7 @@ static func montar(
 
 	t.append("## Resultados por magos x perfil")
 	t.append("")
-	t.append("| Magos | Perfil | Terminadas | Turnos (média/mediana/p95) | Turnos por mago | Sem ponto | Troca | Erro | Partidas com mago sem sílaba | Pontos médios por mago |")
+	t.append("| Magos | Perfil | Terminadas | Turnos (média/mediana/p95) | Turnos por mago | Sem ponto | Troca | Turnos com erro | Partidas com mago sem sílaba | Pontos médios por mago |")
 	t.append("|---|---|---|---|---|---|---|---|---|---|")
 	for r in resultados:
 		var tp: Dictionary = r["turnos_partida"]
@@ -112,16 +112,18 @@ static func montar(
 	t.append("")
 	t.append("Regra em vigor (D-04): erro_passa_a_vez = %s; taxa_erro_aprendiz = %s" % [str(cfg.erro_passa_a_vez), str(cfg.taxa_erro_aprendiz)])
 	t.append("")
-	t.append("| Magos | Dif. turnos médios (aprendiz - perfeito) | Erro (aprendiz) | Mago sem sílaba (perfeito) | Mago sem sílaba (aprendiz) |")
-	t.append("|---|---|---|---|---|")
+	t.append("Turnos com erro = turnos com pelo menos uma jogada errada, qualquer que seja o fim do turno. Erros por turno = jogadas erradas / turnos.")
+	t.append("")
+	t.append("| Magos | Dif. turnos médios (aprendiz - perfeito) | Turnos com erro (aprendiz) | Erros por turno (aprendiz) | Mago sem sílaba (perfeito) | Mago sem sílaba (aprendiz) |")
+	t.append("|---|---|---|---|---|---|")
 	for n in range(1, 5):
 		var pf := _achar(resultados, n, "perfeito")
 		var ap := _achar(resultados, n, "aprendiz")
 		if pf.is_empty() or ap.is_empty():
 			continue
-		t.append("| %d | %+.2f | %s | %s | %s |" % [
+		t.append("| %d | %+.2f | %s | %.3f | %s | %s |" % [
 			n, ap["turnos_partida"]["media"] - pf["turnos_partida"]["media"],
-			_pct(ap["pct_turnos_erro"]), _pct(pf["pct_partidas_mago_zerado"]), _pct(ap["pct_partidas_mago_zerado"])])
+			_pct(ap["pct_turnos_erro"]), ap["erros_por_turno"], _pct(pf["pct_partidas_mago_zerado"]), _pct(ap["pct_partidas_mago_zerado"])])
 	t.append("")
 
 	t.append("## Impacto por palavra")

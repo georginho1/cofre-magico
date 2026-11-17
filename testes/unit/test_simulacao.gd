@@ -49,6 +49,18 @@ func test_aprendiz_erra_e_demora_mais() -> void:
 	assert_gt(apr["turnos_partida"]["media"], per["turnos_partida"]["media"])
 
 
+func test_erro_contado_sem_passar_a_vez() -> void:
+	# CR-01: com erro_passa_a_vez=false o turno nunca termina em ERRO, mas os erros contam.
+	_cfg.taxa_erro_aprendiz = 0.3
+	_cfg.erro_passa_a_vez = false
+	var per := _rodar(2, PerfilPerfeito.new(), 200, 3)
+	var apr := _rodar(2, PerfilAprendiz.new(), 200, 3)
+	assert_eq(per["pct_turnos_erro"], 0.0)
+	assert_eq(per["erros_por_turno"], 0.0)
+	assert_gt(apr["pct_turnos_erro"], 0.0)
+	assert_gte(apr["erros_por_turno"], apr["pct_turnos_erro"])
+
+
 func test_distratoras_alavanca() -> void:
 	_cfg.proporcao_distratoras = 0.0
 	var sem := _rodar(2, PerfilPerfeito.new(), 200, 5)
@@ -94,7 +106,7 @@ func test_mago_zerado_com_4_magos() -> void:
 func test_chaves_do_retorno() -> void:
 	var r := _rodar(1, PerfilPerfeito.new(), 10, 1)
 	for k in ["n_magos", "perfil", "partidas", "terminadas", "pct_terminadas", "turnos_partida",
-			"turnos_por_mago_media", "pct_turnos_sem_ponto", "pct_turnos_troca", "pct_turnos_erro",
+			"turnos_por_mago_media", "pct_turnos_sem_ponto", "pct_turnos_troca", "pct_turnos_erro", "erros_por_turno",
 			"pct_partidas_mago_zerado", "pontos_medios_por_mago", "por_palavra"]:
 		assert_true(r.has(k), k)
 	for k in ["media", "mediana", "p95"]:
