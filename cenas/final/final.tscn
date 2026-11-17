@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://cenas/final/final.gd" id="1_final"]
+
+[node name="Final" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_final")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0784314, 0.129412, 0.239216, 1)
+
+[node name="Margem" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Coluna" type="VBoxContainer" parent="Margem"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="Titulo" type="Label" parent="Margem/Coluna"]
+layout_mode = 2
+theme_type_variation = &"Titulo48"
+text = "Todos ajudaram!"
+horizontal_alignment = 1
+
+[node name="Senhas" type="HBoxContainer" parent="Margem/Coluna"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="Magos" type="HBoxContainer" parent="Margem/Coluna"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 48
+
+[node name="Botoes" type="HBoxContainer" parent="Margem/Coluna"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="BotaoNovo" type="Button" parent="Margem/Coluna/Botoes"]
+custom_minimum_size = Vector2(320, 96)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoPrimario"
+text = "Jogar de novo"
+
+[node name="BotaoMenu" type="Button" parent="Margem/Coluna/Botoes"]
+custom_minimum_size = Vector2(320, 96)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoSecundario"
+text = "Voltar ao menu"

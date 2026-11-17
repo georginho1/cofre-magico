@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://cenas/cofre/cofre.gd" id="1_cofre"]
+
+[node name="Cofre" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cofre")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0784314, 0.129412, 0.239216, 1)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Caixa" type="VBoxContainer" parent="Centro"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 48
+
+[node name="Corpo" type="Control" parent="Centro/Caixa"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="Moldura" type="ColorRect" parent="Centro/Caixa/Corpo"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 320.0
+mouse_filter = 2
+color = Color(0.133333, 0.2, 0.360784, 1)
+
+[node name="Interior" type="ColorRect" parent="Centro/Caixa/Corpo"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 296.0
+offset_bottom = 296.0
+mouse_filter = 2
+color = Color(0.701961, 0.533333, 1, 1)
+
+[node name="Porta" type="ColorRect" parent="Centro/Caixa/Corpo"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 296.0
+offset_bottom = 296.0
+pivot_offset = Vector2(0, 136)
+mouse_filter = 2
+color = Color(0.360784, 0.423529, 0.568627, 1)
+
+[node name="Confete" type="CPUParticles2D" parent="Centro/Caixa/Corpo"]
+position = Vector2(160, 160)
+emitting = false
+amount = 40
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 6.0
+scale_amount_max = 10.0
+
+[node name="Titulo" type="Label" parent="Centro/Caixa"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_type_variation = &"Titulo48"
+text = "O cofre abriu!"
+horizontal_alignment = 1
+
+[node name="Dica" type="Label" parent="Centro/Caixa"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "Toque para continuar"
+horizontal_alignment = 1
+
+[node name="Toque" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+flat = true
