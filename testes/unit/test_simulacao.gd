@@ -129,3 +129,14 @@ func test_d18_um_mago_so_relatado() -> void:
 func test_d18_exigida_falha_em_2_magos() -> void:
 	var rs: Array = [_res(1, 0.30), _res(2, 0.36), _res(3, 0.30), _res(4, 0.27)]
 	assert_false(Relatorio.metas_ok(rs))
+
+
+func test_d18_d19_falham_sem_partidas_terminadas() -> void:
+	# WR-05: taxa 0/1 nao pode passar por vacuidade.
+	var rs: Array = [_res(1, 0.0), _res(2, 0.0), _res(3, 0.0), _res(4, 0.0)]
+	for r in rs:
+		r["terminadas"] = 0
+	for m in Relatorio.avaliar_metas(rs):
+		if m["exigida"]:
+			assert_false(m["ok"], m["descricao"])
+	assert_false(Relatorio.metas_ok(rs))

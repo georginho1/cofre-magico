@@ -33,19 +33,30 @@ static func avaliar_metas(resultados: Array, magos_d18: Array = MAGOS_D18_EXIGID
 	var saida: Array = []
 	var soma: float = 0.0
 	var cont: int = 0
+	## Sem partidas terminadas as taxas sao 0/1 e passariam por vacuidade (WR-05).
+	var media_valida: bool = true
 	for n in range(1, 5):
 		var r := _achar(resultados, n, "perfeito")
 		if r.is_empty():
 			continue
 		var exigida: bool = n in magos_d18
+		if r["terminadas"] == 0:
+			saida.append({"id": "D-18", "descricao": "turnos sem ponto com %d mago(s), perfeito: sem partidas terminadas" % n, "ok": false, "exigida": exigida})
+			if exigida:
+				media_valida = false
+			continue
 		saida.append({"id": "D-18", "descricao": "turnos sem ponto <= 35%% com %d mago(s), perfeito (%s)" % [n, _pct(r["pct_turnos_sem_ponto"])], "ok": r["pct_turnos_sem_ponto"] <= META_SEM_PONTO, "exigida": exigida})
 		if exigida:
 			soma += r["pct_turnos_sem_ponto"]
 			cont += 1
 	if cont > 0:
-		saida.append({"id": "D-18", "descricao": "media de turnos sem ponto nos magos exigidos <= 35%% (%s)" % _pct(soma / cont), "ok": soma / cont <= META_SEM_PONTO, "exigida": true})
+		saida.append({"id": "D-18", "descricao": "media de turnos sem ponto nos magos exigidos <= 35%% (%s)" % _pct(soma / cont), "ok": media_valida and soma / cont <= META_SEM_PONTO, "exigida": true})
+	elif not media_valida:
+		saida.append({"id": "D-18", "descricao": "media de turnos sem ponto nos magos exigidos: sem partidas terminadas", "ok": false, "exigida": true})
 	var r4 := _achar(resultados, 4, "perfeito")
-	if not r4.is_empty():
+	if not r4.is_empty() and r4["terminadas"] == 0:
+		saida.append({"id": "D-19", "descricao": "partidas com mago sem silaba com 4 magos, perfeito: sem partidas terminadas", "ok": false, "exigida": true})
+	elif not r4.is_empty():
 		saida.append({"id": "D-19", "descricao": "partidas com mago sem silaba <= 5%% com 4 magos, perfeito (%s)" % _pct(r4["pct_partidas_mago_zerado"]), "ok": r4["pct_partidas_mago_zerado"] <= META_MAGO_ZERADO, "exigida": true})
 	var todas: bool = true
 	for r in resultados:
