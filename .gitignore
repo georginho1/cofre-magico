@@ -20,3 +20,6 @@ mono_crash.*.json
 *.aab
 *.exe
 build/
+
+# Editor local
+.vscode/
