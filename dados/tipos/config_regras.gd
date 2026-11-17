@@ -13,7 +13,7 @@ extends Resource
 @export var proporcao_distratoras: float = 1.0
 ## 0 = derivado; >0 = teto de cartas do baralho (so corta distratoras).
 @export var tamanho_baralho_partida: int = 0
-## Reservado para a fase de interface; ainda nao e lido por nenhum codigo.
+## Lido pela mesa e pela tela final: mostra a palavra escrita junto da ilustracao (MESA-02).
 @export var mostrar_palavra_escrita: bool = false
 @export var taxa_erro_aprendiz: float = 0.3
 @export var limite_turnos_partida: int = 5000
