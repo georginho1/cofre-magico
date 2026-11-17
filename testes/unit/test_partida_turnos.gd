@@ -24,18 +24,61 @@ func _somar_mao(p: Partida) -> int:
 	return s
 
 
-## Acha uma silaba que NAO e a do espaco (0,0) para provocar erro.
+## Acha uma silaba em circulacao que NAO e a do espaco (0,0) para provocar erro.
 func _silaba_errada(p: Partida) -> String:
 	var certa: String = p.palavras[0].silaba(0)
-	for s in _dist.copias:
+	for s in p.baralho.cartas:
 		if s != certa:
 			return s
+	for j in p.jogadores:
+		for s in j.mao:
+			if s != certa:
+				return s
 	return ""
 
 
+## Poe `silaba` na posicao 0 da mao trocando-a de lugar com uma carta real
+## (da propria mao, do baralho ou de outra mao), para manter os totais (WR-08).
 func _dar_carta(p: Partida, jogador: int, silaba: String) -> int:
-	p.jogadores[jogador].mao[0] = silaba
+	var mao: Array[String] = p.jogadores[jogador].mao
+	var k: int = mao.find(silaba)
+	if k != -1:
+		mao[k] = mao[0]
+		mao[0] = silaba
+		return 0
+	k = p.baralho.cartas.find(silaba)
+	if k != -1:
+		p.baralho.cartas[k] = mao[0]
+		mao[0] = silaba
+		return 0
+	for j in p.jogadores:
+		if j == p.jogadores[jogador]:
+			continue
+		k = j.mao.find(silaba)
+		if k != -1:
+			j.mao[k] = mao[0]
+			mao[0] = silaba
+			return 0
+	fail_test("silaba %s fora de circulacao" % silaba)
 	return 0
+
+
+func _indice_palavra(p: Partida, texto: String) -> int:
+	for k in range(p.palavras.size()):
+		if p.palavras[k].dados.texto == texto:
+			return k
+	return -1
+
+
+## Partida com PIPA e PATO: a silaba PA abre um espaco em cada palavra.
+func _nova_pipa_pato(semente: int) -> Partida:
+	var bib := BibliotecaPalavras.new()
+	bib.palavras.append(_bib.buscar("PIPA"))
+	bib.palavras.append(_bib.buscar("PATO"))
+	_cfg.quantidade_senhas = 2
+	var r := RandomNumberGenerator.new()
+	r.seed = semente
+	return Partida.new(_cfg, bib, _dist, 2, r)
 
 
 func test_acerto() -> void:
@@ -55,12 +98,21 @@ func test_acerto() -> void:
 
 
 func test_acerto_em_qualquer_espaco_com_mesma_silaba() -> void:
-	var p := _nova(2, 2)
-	# Forca a palavra 1 a ter a mesma silaba no espaco 0.
-	var s: String = p.palavras[1].silaba(0)
-	_dar_carta(p, 0, s)
-	assert_eq(p.jogar_silaba(0, 1, 0), ResultadoJogada.Tipo.ACERTO)
-	assert_eq(p.palavras[1].preenchido_por[0], 0)
+	# PA e o espaco 1 de PIPA e o espaco 0 de PATO: os dois aceitam a mesma carta.
+	var p := _nova_pipa_pato(2)
+	var pipa: int = _indice_palavra(p, "PIPA")
+	var pato: int = _indice_palavra(p, "PATO")
+	assert_eq(p.palavras[pipa].silaba(1), "PA")
+	assert_eq(p.palavras[pato].silaba(0), "PA")
+	_dar_carta(p, 0, "PA")
+	assert_eq(p.jogar_silaba(0, pipa, 1), ResultadoJogada.Tipo.ACERTO)
+	assert_eq(p.palavras[pipa].preenchido_por[1], 0)
+	assert_true(p.invariantes_ok())
+	var q := _nova_pipa_pato(2)
+	_dar_carta(q, 0, "PA")
+	assert_eq(q.jogar_silaba(0, _indice_palavra(q, "PATO"), 0), ResultadoJogada.Tipo.ACERTO)
+	assert_eq(q.palavras[_indice_palavra(q, "PATO")].preenchido_por[0], 0)
+	assert_true(q.invariantes_ok())
 
 
 func test_erro_devolve_carta_e_passa_a_vez() -> void:
@@ -99,17 +151,23 @@ func test_invalido_nao_altera_estado() -> void:
 	assert_eq(p.jogar_silaba(0, 9, 0), ResultadoJogada.Tipo.INVALIDO)
 	assert_eq(p.jogar_silaba(0, 0, 9), ResultadoJogada.Tipo.INVALIDO)
 	assert_eq(p.jogar_silaba(0, 0, -1), ResultadoJogada.Tipo.INVALIDO)
+	assert_eq(p.jogadores[0].mao, mao)
+	assert_eq(p.turnos_jogados, 0)
+	assert_eq(p.jogador_atual, 0)
+	assert_eq(p.jogadores[0].pontos, 0)
+	assert_true(p.palavras[0].espaco_aberto(0))
 	# espaco ja preenchido
 	_dar_carta(p, 0, p.palavras[0].silaba(0))
 	p.jogar_silaba(0, 0, 0)
 	p.jogador_atual = 0
 	_dar_carta(p, 0, p.palavras[0].silaba(0))
 	var turnos: int = p.turnos_jogados
+	var mao_antes: Array[String] = p.jogadores[0].mao.duplicate()
 	assert_eq(p.jogar_silaba(0, 0, 0), ResultadoJogada.Tipo.INVALIDO)
 	assert_eq(p.turnos_jogados, turnos)
 	assert_eq(p.jogador_atual, 0)
+	assert_eq(p.jogadores[0].mao, mao_antes)
 	assert_signal_not_emitted(p, "jogada_recusada")
-	assert_eq(mao.size(), _cfg.tamanho_mao)
 
 
 func test_invalido_com_partida_concluida() -> void:
@@ -197,8 +255,8 @@ func test_baralho_vazio_e_mao_vazia() -> void:
 
 func test_acerto_com_baralho_vazio_nao_repoe() -> void:
 	var p := _nova(12, 2)
-	p.baralho.cartas.clear()
 	_dar_carta(p, 0, p.palavras[0].silaba(0))
+	p.baralho.cartas.clear()
 	assert_eq(p.jogar_silaba(0, 0, 0), ResultadoJogada.Tipo.ACERTO)
 	assert_eq(p.jogadores[0].mao.size(), _cfg.tamanho_mao - 1)
 
