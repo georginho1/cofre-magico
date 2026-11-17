@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: milestone
 status: verifying
 stopped_at: Completed 01-08-PLAN.md
-last_updated: "2026-11-17T15:22:56.962Z"
+last_updated: "2026-11-17T15:57:38.461Z"
 last_activity: 2026-11-17
 progress:
   total_phases: 4
@@ -71,6 +71,7 @@ Recent decisions affecting current work:
 - [Roadmap]: Arte, áudio e créditos (Fase 3) são a parte cortável; a Fase 4 depende só da Fase 2
 - [Roadmap]: CONT-01 é atendido na Fase 1 com imagens provisórias; as ilustrações definitivas entram com CONT-03 na Fase 3
 - [Phase 01]: 01-08: proporcao_distratoras=0.40, D-18 exigida para 2-4 magos (1 mago so relatado); D-04 mantido. Aprovado 2026-11-17
+- [Phase 01]: WR-02 aprovada pela equipe (2026-11-17): na troca o jogador compra antes de devolver os descartes — Evita receber a mesma mao de volta com baralho quase vazio
 
 ### Pending Todos
 
