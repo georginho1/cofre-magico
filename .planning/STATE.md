@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Completed 01-08-PLAN.md
-last_updated: "2026-11-17T15:57:38.461Z"
+status: ready_to_plan
+stopped_at: Phase 01 complete (8/8) — ready to discuss Phase 2
+last_updated: 2026-11-17T16:00:34.710Z
 last_activity: 2026-11-17
 progress:
   total_phases: 4
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-11-11)
 
 **Core value:** Um grupo de até quatro jogadores, em um único aparelho, consegue jogar uma partida completa: formar as quatro palavras-senha colocando sílabas corretas, ver quem contribuiu com cada sílaba e abrir o cofre juntos.
-**Current focus:** Phase 01 — funda-o-regras-e-simulador
+**Current focus:** Phase 2 — partida completa jogável
 
 ## Current Position
 
-Phase: 01 (funda-o-regras-e-simulador) — EXECUTING
-Plan: 8 of 8
-Status: Phase complete — ready for verification
+Phase: 2
+Plan: Not started
+Status: Ready to plan
 Last activity: 2026-11-17
 
 Progress: [██████████] 100%
@@ -36,7 +36,7 @@ Progress: [██████████] 100%
 
 **Velocity:**
 
-- Total plans completed: 0
+- Total plans completed: 8
 - Average duration: - min
 - Total execution time: 0.0 hours
 
@@ -44,7 +44,7 @@ Progress: [██████████] 100%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01 | 8 | - | - |
 
 **Recent Trend:**
 
