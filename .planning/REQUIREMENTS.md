@@ -49,9 +49,9 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 
 ### Cofre e fluxo
 
-- [ ] **COFR-01**: Ao completar todas as senhas, o cofre se abre com uma celebração coletiva
-- [ ] **COFR-02**: A tela final mostra a contribuição de cada mago sem ordenar nem declarar vencedor
-- [ ] **COFR-03**: Os jogadores iniciam uma nova partida a partir da tela final
+- [x] **COFR-01**: Ao completar todas as senhas, o cofre se abre com uma celebração coletiva
+- [x] **COFR-02**: A tela final mostra a contribuição de cada mago sem ordenar nem declarar vencedor
+- [x] **COFR-03**: Os jogadores iniciam uma nova partida a partir da tela final
 - [x] **COFR-04**: O jogo abre em um menu inicial com um botão para jogar
 - [x] **COFR-05**: Os jogadores pausam ou saem da partida com confirmação, e o botão voltar do Android não encerra a partida sem perguntar
 
@@ -136,9 +136,9 @@ Preenchida na criação do roadmap (2026-11-11).
 | MESA-07 | Phase 2 | Complete |
 | MESA-08 | Phase 2 | Complete |
 | MESA-09 | Phase 2 | Complete |
-| COFR-01 | Phase 2 | Pending |
-| COFR-02 | Phase 2 | Pending |
-| COFR-03 | Phase 2 | Pending |
+| COFR-01 | Phase 2 | Complete |
+| COFR-02 | Phase 2 | Complete |
+| COFR-03 | Phase 2 | Complete |
 | COFR-04 | Phase 2 | Complete |
 | COFR-05 | Phase 2 | Complete |
 | AUDI-01 | Phase 3 | Pending |
