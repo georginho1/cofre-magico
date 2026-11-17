@@ -106,8 +106,11 @@ func test_n_magos_limitado() -> void:
 func test_normaliza_config() -> void:
 	_cfg.tamanho_mao = 99
 	var p := _nova(1)
-	assert_eq(_cfg.tamanho_mao, 10)
+	assert_eq(p.cfg.tamanho_mao, 10)
 	assert_eq(p.jogadores[0].mao.size(), 10)
+	# WR-07: a config do chamador nao e alterada.
+	assert_eq(_cfg.tamanho_mao, 99)
+	assert_ne(p.cfg, _cfg)
 
 
 func test_palavra_senha() -> void:

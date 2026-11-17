@@ -26,7 +26,8 @@ func _init(
 	n_magos: int,
 	p_rng: RandomNumberGenerator
 ) -> void:
-	cfg = p_cfg
+	# Copia: o recurso carregado e compartilhado pelo cache e nao pode ser alterado (WR-07).
+	cfg = p_cfg.duplicate() as ConfigRegras
 	cfg.normalizar()
 	rng = p_rng
 	var n: int = clampi(n_magos, 1, 4)

@@ -12,6 +12,7 @@ static func rodar(
 	n_partidas: int,
 	semente: int
 ) -> Dictionary:
+	cfg = cfg.duplicate() as ConfigRegras
 	cfg.normalizar()
 	var limite: int = cfg.limite_turnos_partida
 	var terminadas: int = 0

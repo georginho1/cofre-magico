@@ -8,7 +8,7 @@ var _contador: int = 0
 
 
 func _ready() -> void:
-	var regras: ConfigRegras = load("res://dados/regras_padrao.tres") as ConfigRegras
+	var regras: ConfigRegras = (load("res://dados/regras_padrao.tres") as ConfigRegras).duplicate() as ConfigRegras
 	regras.normalizar()
 	_rotulo_mao.text = "Mão: %d cartas" % regras.tamanho_mao
 	print("COFRE_MAGICO_INICIAL tamanho_mao=%d" % regras.tamanho_mao)
