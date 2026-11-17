@@ -131,6 +131,9 @@ func _ao_sair() -> void:
 
 ## Esc e botao voltar do Android chegam aqui via Sessao; nunca encerra sem perguntar (COFR-05).
 func ao_voltar() -> void:
+	if _partida == null:
+		Sessao.ir_para(Sessao.CENA_MENU)
+		return
 	if _pausa.esta_aberto():
 		_pausa.voltar()
 	else:
