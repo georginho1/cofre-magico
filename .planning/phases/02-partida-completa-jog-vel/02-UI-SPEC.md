@@ -49,8 +49,8 @@ Implementação: `MarginContainer` com `theme_override_constants` vindo do Theme
 Exceções (todas intencionais):
 - **Alvo de toque mínimo 96px** (diretriz CLAUDE.md, base 1280x720): botões, cartas, magos na seleção e espaços de sílaba têm lado mínimo 96px, exceto o botão de pausa (abaixo).
 - Espaço de sílaba: **92 x 96px** (largura reduzida para 3 espaços caberem na largura de uma senha de 296px; ainda dentro do "~96px"). Validar em aparelho real.
-- Botão de pausa: **72 x 72px** no canto superior direito, de propósito menor e longe da mão para evitar toque acidental (D-16); cercado por 16px de área morta.
-- Valores de tamanho de componente (96, 92, 144, 160, 296, 72) são dimensões de controles, não tokens de espaçamento.
+- Botão de pausa: **64 x 64px** (token 3xl, mesma altura da barra superior) no canto superior direito, de propósito menor e longe da mão para evitar toque acidental (D-16); 16px de área morta abaixo dele (faixa entre barra e senhas) e à esquerda.
+- Valores de tamanho de componente (96, 92, 144, 160, 296, 64) são dimensões de controles, não tokens de espaçamento.
 
 ---
 
@@ -62,12 +62,13 @@ Quatro tamanhos e dois pesos (Regular 400 e Bold 700). Tamanhos em px na base 12
 |-------|---------|------|-----------------|-----|
 | Body | 24px | Regular 400 | 1.5 | frases curtas de apoio ("Toque para começar"), rótulo placeholder da palavra (D-12), rótulo da palavra escrita (MESA-02) |
 | Label | 32px | Bold 700 | 1.2 | texto de botões, "Vez do Mago X" no indicador de turno, mensagens do painel de pausa |
-| Heading | 48px | Bold 700 | 1.2 | títulos de tela ("Quem vai jogar?"), "O cofre abriu!", "Todos ajudaram!", faixa de passagem de vez |
-| Display | 72px | Bold 700 | 1.0 | sílaba na carta da mão e sílaba aceita nos espaços; título "Cofre Mágico" no menu |
+| Heading | 48px | Bold 700 | 1.2 | títulos de tela ("Quem vai jogar?"), "O cofre abriu!", "Todos ajudaram!", faixa de passagem de vez, sílaba aceita nos espaços de sílaba |
+| Display | 72px | Bold 700 | 1.0 | sílaba na carta da mão; título "Cofre Mágico" no menu |
 
 Regras:
 - Sílabas e palavras sempre em maiúsculas (`text.to_upper()` na apresentação; os dados permanecem como estão).
-- Sílaba na carta: 72px Bold centralizada; nos espaços aceitos reduzida para 56px **não permitida** (apenas 4 tamanhos): manter 72px e dimensionar o espaço para caber 2 letras (cabe em 92px com Andika Bold; conferir com a fonte instalada, se não couber trocar o espaço para 96px e a senha para 3 x 96 + 2 x 8 = 304px, reduzindo a margem lateral de xl para md).
+- Sílaba na carta da mão: Display 72px Bold centralizada (carta de 144px, 136px úteis; a sílaba mais larga, "MO", mede 118px de avanço em Andika Bold 72px).
+- Sílaba aceita no espaço de sílaba (mesa e tela final): Heading 48px Bold ("MO" = 79px, cabe no espaço de 92px). Medido com fontTools na Andika Bold (ver 02-RESEARCH.md); 72px não cabe em 92 nem em 96px.
 - Nenhum texto abaixo de 24px.
 - Rótulo de palavra (D-12 / MESA-02): Body 24px Regular em maiúsculas.
 
@@ -134,11 +135,13 @@ Três faixas verticais dentro da área segura 1280x720 (margem 32px):
 
 | Faixa | Altura | Conteúdo |
 |-------|--------|----------|
-| Barra superior | 64px | esquerda: indicador de turno (D-10); direita: botão de pausa 72px |
-| Senhas | 320px | 4 senhas em linha única, cada **296px** de largura, separação 8px (total 1208px; margem lateral 36px) |
+| Barra superior | 64px | esquerda: indicador de turno (D-10); direita: botão de pausa 64 x 64px |
+| Senhas | 320px | 4 senhas em linha única, cada **296px** de largura, separação 8px (total 1208px, centralizado na largura útil de 1216px após a margem xl de 32px) |
 | Mão | 200px | 5 cartas à esquerda + botão comprar/trocar à direita |
 
 Soma: 64 + 16 + 320 + 16 + 200 = 616px mais margens de 32px = 680px, cabendo em 720px.
+
+**Ponto focal da mesa:** as cartas da mão e os espaços abertos das senhas (onde a criança age); o indicador de turno é secundário. Nada além do acento violeta compete com eles.
 
 **Indicador de turno (D-10/D-11/MESA-03/MESA-06):** painel `#22335C` com o círculo do mago (cor + símbolo, 48px), texto "Vez do Mago X" (Label 32px; X = nome da cor: "Vermelho", "Azul", "Verde", "Amarelo") e, à direita, **ícones de ponto repetidos** (um por sílaba posta pelo mago, 24px, na cor do mago, sem número, quebrando linha se necessário; máximo previsto cabe em 8 ícones por linha). Só mostra o mago da vez; nunca os pontos de outros.
 
@@ -146,14 +149,14 @@ Soma: 64 + 16 + 320 + 16 + 200 = 616px mais margens de 32px = 680px, cabendo em 
 - área da ilustração 296 x 160px, fundo `#DCEBFA`, placeholder `arte/provisoria/placeholder_palavra.svg` com o **nome da palavra em Body 24px maiúsculo** sobreposto (D-12; rótulo removido na Fase 3);
 - linha de espaços (2 ou 3), cada 92 x 96px, separação 8px (sm), alinhada ao centro; espaço vazio: `#DCEBFA` com contorno cinza `#5C6C91` 2px;
 - se `mostrar_palavra_escrita` for verdadeiro: palavra escrita (Body 24px) sob a ilustração, entre a ilustração e os espaços, 32px de altura; se falso, o espaço some e a senha apenas fica mais compacta (não deixar buraco). Valor lido de `ConfigRegras`, nunca fixo;
-- espaço preenchido (D-13/MESA-05): fundo na **cor do mago autor**, sílaba em Display 72px (cor do texto conforme tabela de magos) e pequeno símbolo do mago (24px) no canto superior esquerdo do espaço; permanece até a tela final;
+- espaço preenchido (D-13/MESA-05): fundo na **cor do mago autor**, sílaba em Heading 48px Bold (cor do texto conforme tabela de magos) e pequeno símbolo do mago (24px) no canto superior esquerdo do espaço; permanece até a tela final;
 - senha completa: contorno de 4px na cor `#FFFFFF` ao redor do cartão e leve pulso de escala 1.0 -> 1.04 (sem som nem texto).
 
 **Mão (MESA-03/04/09):** 5 cartas 144 x 176px (HBox, separação 16px = 5*144 + 4*16 = 784px). Carta: fundo `#DCEBFA`, borda 4px `#14213D`, cantos arredondados 16px, sílaba Display 72px Bold `#14213D` centralizada, em maiúsculas. Carta selecionada: sobe 16px, contorno 4px acento violeta (D-04). Mão do mago da vez só aparece depois do toque na faixa de vez.
 
 **Botão comprar/trocar (MESA-07):** 360 x 120px à direita da mão (24px de separação), sempre visível, Label 32px: texto "Trocar cartas". Estilo normal: superfície `#22335C` com contorno branco 2px. Quando `existe_jogada()` é falso: preenchimento violeta + pulsar (item 3 do acento). Habilitado em qualquer turno (regra herdada: troca permitida mesmo com jogada).
 
-**Pausa (D-16):** botão 72px com ícone de duas barras, canto superior direito. Abre painel modal 560 x 400px centralizado sobre fundo escurecido (`#14213D` a 80%): título "Pausa" (Heading 48px), botões "Continuar" (primário, 360 x 96px) e "Sair da partida" (secundário, 360 x 96px), separação 16px. "Sair da partida" abre confirmação no mesmo painel: "Sair da partida?" (Heading), texto "A partida atual será perdida." (Body), botões "Sair" (secundário) e "Continuar jogando" (primário). Esc e botão voltar do Android abrem o mesmo painel; com o painel aberto, voltar equivale a "Continuar". O painel congela a interação com a mesa.
+**Pausa (D-16):** botão 64 x 64px com ícone de duas barras, canto superior direito. Abre painel modal 560 x 400px centralizado sobre fundo escurecido (`#14213D` a 80%): título "Pausa" (Heading 48px), botões "Continuar" (primário, 360 x 96px) e "Sair da partida" (secundário, 360 x 96px), separação 16px. "Sair da partida" abre confirmação no mesmo painel: "Sair da partida?" (Heading), texto "A partida atual será perdida." (Body), botões "Sair" (secundário) e "Continuar jogando" (primário). Esc e botão voltar do Android abrem o mesmo painel; com o painel aberto, voltar equivale a "Continuar". O painel congela a interação com a mesa.
 
 ### 4. Faixa de passagem de vez (D-01, D-03)
 Sobreposição de tela cheia horizontal (faixa 1280 x 240px centralizada vertical, fundo `#22335C` 95%, borda superior e inferior de 8px na cor do próximo mago): círculo do mago (cor + símbolo 96px), "Vez do Mago X" (Heading 48px) e "Toque para começar" (Body 24px). As 4 senhas permanecem visíveis acima e abaixo da faixa (a mão fica oculta). **Toque em qualquer lugar da faixa** dispensa e revela a mão (fade 0,2 s). Idêntica após acerto, erro ou troca (sem pista de quem errou). Não mostra pontos. Na partida de 1 mago, a faixa aparece igualmente (consistência, mesmo comportamento após cada jogada). Primeira vez: aparece também no início da partida.
@@ -219,7 +222,7 @@ Tom: frases curtas, sem pontuação de erro, vocabulário para crianças de 7 a 
 | MESA-06 | ícones de ponto só do mago da vez, sem número, sem ranking |
 | MESA-07 | botão sempre visível; destaque violeta pulsante |
 | MESA-08 | conteúdo cabe em 1280x720; 16:9, 20:9 e 4:3 só aumentam o fundo; testar também janela pequena de PC |
-| MESA-09 | Andika Bold maiúscula 72px, `#14213D` sobre `#DCEBFA` |
+| MESA-09 | Andika Bold maiúscula: 72px na carta da mão, 48px no espaço de sílaba; `#14213D` sobre `#DCEBFA` |
 | COFR-01..05 | telas 4, 5, 6, pausa e voltar descritos acima |
 | Daltonismo | cor sempre acompanhada de símbolo (D-05) |
 | Contraste | texto principal >= 12:1; violeta sobre azul-noite >= 6:1; texto escuro sobre amarelo e violeta |
