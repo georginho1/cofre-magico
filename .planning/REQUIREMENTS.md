@@ -27,11 +27,11 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 - [x] **PART-02**: A cada partida o jogo sorteia 4 palavras-senha entre as 30
 - [x] **PART-03**: O baralho de cada partida é um recorte do baralho de 100 cartas, concentrado nas sílabas das senhas sorteadas
 - [x] **PART-04**: Cada mago recebe uma mão de cartas de sílabas no início da partida
-- [ ] **PART-05**: No seu turno, o mago coloca uma sílaba da mão em um espaço de uma palavra-senha, e o jogo aceita apenas se for a sílaba daquele espaço exato
-- [ ] **PART-06**: Quando a sílaba não serve, a carta volta para a mão sem punição nem marcação de erro
-- [ ] **PART-07**: O mago pode comprar ou trocar cartas no seu turno quando não tem jogada
-- [ ] **PART-08**: Após a ação, a vez passa para o próximo mago na ordem
-- [ ] **PART-09**: Toda partida pode ser concluída: nenhuma carta necessária fica inalcançável e todo turno tem ao menos uma ação possível
+- [x] **PART-05**: No seu turno, o mago coloca uma sílaba da mão em um espaço de uma palavra-senha, e o jogo aceita apenas se for a sílaba daquele espaço exato
+- [x] **PART-06**: Quando a sílaba não serve, a carta volta para a mão sem punição nem marcação de erro
+- [x] **PART-07**: O mago pode comprar ou trocar cartas no seu turno quando não tem jogada
+- [x] **PART-08**: Após a ação, a vez passa para o próximo mago na ordem
+- [x] **PART-09**: Toda partida pode ser concluída: nenhuma carta necessária fica inalcançável e todo turno tem ao menos uma ação possível
 - [x] **PART-10**: A equipe ajusta as regras (tamanho da mão, troca, número de senhas, tamanho do baralho da partida, palavra escrita) em um arquivo de configuração, sem alterar código
 - [ ] **PART-11**: A equipe executa um simulador sem interface que mede turnos sem jogada, duração da partida e partidas em que um mago não pontua
 
@@ -120,11 +120,11 @@ Preenchida na criação do roadmap (2026-11-11).
 | PART-02 | Phase 1 | Complete |
 | PART-03 | Phase 1 | Complete |
 | PART-04 | Phase 1 | Complete |
-| PART-05 | Phase 1 | Pending |
-| PART-06 | Phase 1 | Pending |
-| PART-07 | Phase 1 | Pending |
-| PART-08 | Phase 1 | Pending |
-| PART-09 | Phase 1 | Pending |
+| PART-05 | Phase 1 | Complete |
+| PART-06 | Phase 1 | Complete |
+| PART-07 | Phase 1 | Complete |
+| PART-08 | Phase 1 | Complete |
+| PART-09 | Phase 1 | Complete |
 | PART-10 | Phase 1 | Complete |
 | PART-11 | Phase 1 | Pending |
 | MESA-01 | Phase 2 | Pending |
