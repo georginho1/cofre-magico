@@ -25,7 +25,8 @@ static func rodar(
 	## Total de acoes com resultado ERRO.
 	var erros_acoes: int = 0
 	var zerados: int = 0
-	var soma_pontos: int = 0
+	## Soma, por partida terminada, da media de pontos por mago (numero real de magos da Partida).
+	var soma_pontos_mago: float = 0.0
 	var soma_turnos_mago: float = 0.0
 	# texto -> {aparicoes, soma_turnos, completadas, ultima}
 	var palavras: Dictionary = {}
@@ -109,10 +110,12 @@ static func rodar(
 		erros_acoes += ea
 		soma_turnos_mago += float(turnos) / float(partida.jogadores.size())
 		var zerado: bool = false
+		var pontos_partida: int = 0
 		for j in partida.jogadores:
-			soma_pontos += j.pontos
+			pontos_partida += j.pontos
 			if j.pontos == 0:
 				zerado = true
+		soma_pontos_mago += float(pontos_partida) / float(partida.jogadores.size())
 		if zerado:
 			zerados += 1
 
@@ -148,7 +151,7 @@ static func rodar(
 		"pct_turnos_erro": float(por_erro) / tt,
 		"erros_por_turno": float(erros_acoes) / tt,
 		"pct_partidas_mago_zerado": float(zerados) / term,
-		"pontos_medios_por_mago": float(soma_pontos) / (term * float(n_magos)),
+		"pontos_medios_por_mago": soma_pontos_mago / term,
 		"por_palavra": por_palavra,
 	}
 

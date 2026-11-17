@@ -142,3 +142,11 @@ func test_d18_d19_falham_sem_partidas_terminadas() -> void:
 		if m["exigida"]:
 			assert_false(m["ok"], m["descricao"])
 	assert_false(Relatorio.metas_ok(rs))
+
+
+func test_pontos_por_mago_usa_magos_reais() -> void:
+	# IN-06: n_magos=9 vira 4 magos na Partida; a media divide pelos 4, nao por 9.
+	# Cada partida tem 4 palavras de 2 ou 3 silabas, entao 4 magos somam de 8 a 12 pontos.
+	var r := _rodar(9, PerfilPerfeito.new(), 20, 4)
+	assert_eq(r["terminadas"], 20)
+	assert_between(r["pontos_medios_por_mago"] * 4.0, 8.0, 12.0)
