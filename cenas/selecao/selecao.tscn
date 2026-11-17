@@ -1,0 +1,148 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://cenas/selecao/selecao.gd" id="1_sel"]
+[ext_resource type="Script" path="res://cenas/comum/simbolo_mago.gd" id="2_sim"]
+
+[node name="Selecao" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sel")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0784314, 0.129412, 0.239216, 1)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Caixa" type="VBoxContainer" parent="Centro"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Titulo" type="Label" parent="Centro/Caixa"]
+layout_mode = 2
+theme_type_variation = &"Titulo48"
+text = "Quem vai jogar?"
+horizontal_alignment = 1
+
+[node name="LinhaMagos" type="HBoxContainer" parent="Centro/Caixa"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="Mago0" type="Button" parent="Centro/Caixa/LinhaMagos"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoMago"
+toggle_mode = true
+
+[node name="Centro" type="CenterContainer" parent="Centro/Caixa/LinhaMagos/Mago0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Simbolo" type="Control" parent="Centro/Caixa/LinhaMagos/Mago0/Centro"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_sim")
+
+[node name="Mago1" type="Button" parent="Centro/Caixa/LinhaMagos"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoMago"
+toggle_mode = true
+
+[node name="Centro" type="CenterContainer" parent="Centro/Caixa/LinhaMagos/Mago1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Simbolo" type="Control" parent="Centro/Caixa/LinhaMagos/Mago1/Centro"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_sim")
+
+[node name="Mago2" type="Button" parent="Centro/Caixa/LinhaMagos"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoMago"
+toggle_mode = true
+
+[node name="Centro" type="CenterContainer" parent="Centro/Caixa/LinhaMagos/Mago2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Simbolo" type="Control" parent="Centro/Caixa/LinhaMagos/Mago2/Centro"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_sim")
+
+[node name="Mago3" type="Button" parent="Centro/Caixa/LinhaMagos"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BotaoMago"
+toggle_mode = true
+
+[node name="Centro" type="CenterContainer" parent="Centro/Caixa/LinhaMagos/Mago3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Simbolo" type="Control" parent="Centro/Caixa/LinhaMagos/Mago3/Centro"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_sim")
+
+[node name="Dica" type="Label" parent="Centro/Caixa"]
+layout_mode = 2
+text = "Toque nos magos para acender"
+horizontal_alignment = 1
+
+[node name="BotaoComecar" type="Button" parent="Centro/Caixa"]
+custom_minimum_size = Vector2(360, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_type_variation = &"BotaoPrimario"
+disabled = true
+text = "Começar"

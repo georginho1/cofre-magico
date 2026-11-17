@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cofre Magico"
-run/main_scene="res://cenas/inicial/inicial.tscn"
+run/main_scene="res://cenas/menu/menu.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 config/quit_on_go_back=false

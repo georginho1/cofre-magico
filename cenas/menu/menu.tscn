@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://cenas/menu/menu.gd" id="1_menu"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0784314, 0.129412, 0.239216, 1)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Caixa" type="VBoxContainer" parent="Centro"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Cofre" type="ColorRect" parent="Centro/Caixa"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.133333, 0.2, 0.360784, 1)
+
+[node name="Fechadura" type="ColorRect" parent="Centro/Caixa/Cofre"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 100.0
+offset_bottom = 100.0
+color = Color(0.701961, 0.533333, 1, 1)
+
+[node name="Titulo" type="Label" parent="Centro/Caixa"]
+layout_mode = 2
+theme_type_variation = &"Display72"
+text = "COFRE MÁGICO"
+horizontal_alignment = 1
+
+[node name="BotaoJogar" type="Button" parent="Centro/Caixa"]
+custom_minimum_size = Vector2(360, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_type_variation = &"BotaoPrimario"
+text = "Jogar"
