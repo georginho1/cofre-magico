@@ -13,10 +13,11 @@ extends Resource
 @export var proporcao_distratoras: float = 1.0
 ## 0 = derivado; >0 = teto de cartas do baralho (so corta distratoras).
 @export var tamanho_baralho_partida: int = 0
+## Reservado para a fase de interface; ainda nao e lido por nenhum codigo.
 @export var mostrar_palavra_escrita: bool = false
 @export var taxa_erro_aprendiz: float = 0.3
 @export var limite_turnos_partida: int = 5000
-## 0 = aleatoria.
+## 0 = padrao do consumidor (o simulador usa uma semente fixa).
 @export var semente: int = 0
 
 
