@@ -23,7 +23,7 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 
 ### Partida (regras)
 
-- [ ] **PART-01**: Os jogadores escolhem quais magos participam (1 a 4) tocando neles, sem digitar nomes
+- [x] **PART-01**: Os jogadores escolhem quais magos participam (1 a 4) tocando neles, sem digitar nomes
 - [x] **PART-02**: A cada partida o jogo sorteia 4 palavras-senha entre as 30
 - [x] **PART-03**: O baralho de cada partida é um recorte do baralho de 100 cartas, concentrado nas sílabas das senhas sorteadas
 - [x] **PART-04**: Cada mago recebe uma mão de cartas de sílabas no início da partida
@@ -45,15 +45,15 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 - [ ] **MESA-06**: Cada mago vê seus pontos simbólicos, sem ranking nem comparação entre jogadores
 - [ ] **MESA-07**: O botão de comprar/trocar fica sempre visível e ganha destaque quando a mão não tem jogada
 - [ ] **MESA-08**: A mesa é usável em celular, tablet e PC (proporções 16:9, 20:9 e 4:3) sem elementos cortados
-- [ ] **MESA-09**: Sílabas e palavras aparecem em letras maiúsculas grandes, sem serifa e com alto contraste
+- [x] **MESA-09**: Sílabas e palavras aparecem em letras maiúsculas grandes, sem serifa e com alto contraste
 
 ### Cofre e fluxo
 
 - [ ] **COFR-01**: Ao completar todas as senhas, o cofre se abre com uma celebração coletiva
 - [ ] **COFR-02**: A tela final mostra a contribuição de cada mago sem ordenar nem declarar vencedor
 - [ ] **COFR-03**: Os jogadores iniciam uma nova partida a partir da tela final
-- [ ] **COFR-04**: O jogo abre em um menu inicial com um botão para jogar
-- [ ] **COFR-05**: Os jogadores pausam ou saem da partida com confirmação, e o botão voltar do Android não encerra a partida sem perguntar
+- [x] **COFR-04**: O jogo abre em um menu inicial com um botão para jogar
+- [x] **COFR-05**: Os jogadores pausam ou saem da partida com confirmação, e o botão voltar do Android não encerra a partida sem perguntar
 
 ### Áudio
 
@@ -116,7 +116,7 @@ Preenchida na criação do roadmap (2026-11-11).
 | CONT-02 | Phase 1 | Complete |
 | CONT-03 | Phase 3 | Pending |
 | CONT-04 | Phase 3 | Pending |
-| PART-01 | Phase 2 | Pending |
+| PART-01 | Phase 2 | Complete |
 | PART-02 | Phase 1 | Complete |
 | PART-03 | Phase 1 | Complete |
 | PART-04 | Phase 1 | Complete |
@@ -135,12 +135,12 @@ Preenchida na criação do roadmap (2026-11-11).
 | MESA-06 | Phase 2 | Pending |
 | MESA-07 | Phase 2 | Pending |
 | MESA-08 | Phase 2 | Pending |
-| MESA-09 | Phase 2 | Pending |
+| MESA-09 | Phase 2 | Complete |
 | COFR-01 | Phase 2 | Pending |
 | COFR-02 | Phase 2 | Pending |
 | COFR-03 | Phase 2 | Pending |
-| COFR-04 | Phase 2 | Pending |
-| COFR-05 | Phase 2 | Pending |
+| COFR-04 | Phase 2 | Complete |
+| COFR-05 | Phase 2 | Complete |
 | AUDI-01 | Phase 3 | Pending |
 | AUDI-02 | Phase 3 | Pending |
 | TEST-01 | Phase 4 | Pending |
