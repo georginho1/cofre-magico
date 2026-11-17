@@ -33,7 +33,7 @@ Requisitos do protótipo de dezembro de 2026. Cada um é mapeado para uma fase d
 - [x] **PART-08**: Após a ação, a vez passa para o próximo mago na ordem
 - [x] **PART-09**: Toda partida pode ser concluída: nenhuma carta necessária fica inalcançável e todo turno tem ao menos uma ação possível
 - [x] **PART-10**: A equipe ajusta as regras (tamanho da mão, troca, número de senhas, tamanho do baralho da partida, palavra escrita) em um arquivo de configuração, sem alterar código
-- [ ] **PART-11**: A equipe executa um simulador sem interface que mede turnos sem jogada, duração da partida e partidas em que um mago não pontua
+- [x] **PART-11**: A equipe executa um simulador sem interface que mede turnos sem jogada, duração da partida e partidas em que um mago não pontua
 
 ### Mesa (interface)
 
@@ -126,7 +126,7 @@ Preenchida na criação do roadmap (2026-11-11).
 | PART-08 | Phase 1 | Complete |
 | PART-09 | Phase 1 | Complete |
 | PART-10 | Phase 1 | Complete |
-| PART-11 | Phase 1 | Pending |
+| PART-11 | Phase 1 | Complete |
 | MESA-01 | Phase 2 | Pending |
 | MESA-02 | Phase 2 | Pending |
 | MESA-03 | Phase 2 | Pending |

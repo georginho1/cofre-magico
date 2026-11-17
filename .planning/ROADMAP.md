@@ -40,7 +40,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. A equipe muda um valor no arquivo de configuração (tamanho da mão, troca, número de senhas, tamanho do baralho da partida) e o relatório do simulador muda, sem nenhuma alteração de código
   5. Os valores iniciais das regras foram escolhidos com base nos números do simulador e estão registrados como decisão no PROJECT.md
 
-**Plans:** 5/8 plans executed
+**Plans:** 6/8 plans executed
 
 Plans:
 **Wave 1**
@@ -66,7 +66,7 @@ Plans:
 
 **Wave 6** *(blocked on Wave 5 completion)*
 
-- [ ] 01-07-PLAN.md — Simulador sem tela com perfis, relatório e metas
+- [x] 01-07-PLAN.md — Simulador sem tela com perfis, relatório e metas
 
 **Wave 7** *(blocked on Wave 6 completion)*
 
@@ -127,7 +127,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Fundação, regras e simulador | 5/8 | In Progress|  |
+| 1. Fundação, regras e simulador | 6/8 | In Progress|  |
 | 2. Partida completa jogável | 0/TBD | Not started | - |
 | 3. Arte, áudio e créditos | 0/TBD | Not started | - |
 | 4. Testes com adultos e entrega | 0/TBD | Not started | - |
