@@ -202,6 +202,7 @@ func _ao_tocar_espaco(p: int, e: int) -> void:
 		return
 	_definir_ocupado(true)
 	var autor_indice: int = _partida.jogador_atual
+	var turnos_antes: int = _partida.turnos_jogados
 	var carta_ctrl: Button = _cartas[_selecionada]
 	var origem: Vector2 = carta_ctrl.global_position
 	var res: ResultadoJogada.Tipo = _partida.jogar_silaba(_selecionada, p, e)
@@ -217,12 +218,14 @@ func _ao_tocar_espaco(p: int, e: int) -> void:
 	if not is_inside_tree():
 		return
 	_selecionada = -1
-	match FluxoMesa.proxima_etapa(res, _partida.concluida()):
+	var vez_passou: bool = _partida.turnos_jogados != turnos_antes
+	match FluxoMesa.proxima_etapa(res, _partida.concluida(), vez_passou):
 		FluxoMesa.Etapa.COFRE:
 			Sessao.ir_para(Sessao.CENA_COFRE)
 		FluxoMesa.Etapa.FAIXA_VEZ:
 			_mostrar_faixa()
 		_:
+			_reconstruir_mao()
 			_definir_ocupado(false)
 			_atualizar_indicador()
 			_pulsar_botao(not _partida.existe_jogada())

@@ -5,9 +5,12 @@ extends RefCounted
 enum Etapa { FAIXA_VEZ, COFRE, NADA }
 
 
-static func proxima_etapa(res: ResultadoJogada.Tipo, concluida: bool) -> Etapa:
+## `vez_passou`: a vez realmente passou para o proximo mago depois da jogada.
+static func proxima_etapa(res: ResultadoJogada.Tipo, concluida: bool, vez_passou: bool) -> Etapa:
 	if res == ResultadoJogada.Tipo.INVALIDO:
 		return Etapa.NADA
 	if concluida:
 		return Etapa.COFRE
+	if not vez_passou:
+		return Etapa.NADA
 	return Etapa.FAIXA_VEZ
